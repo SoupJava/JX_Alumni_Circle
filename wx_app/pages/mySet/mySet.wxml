@@ -1,0 +1,164 @@
+<!--pages/mySet/mySet.wxml-->
+<view style="height: 100%;">
+  <view class="userinfo">
+    <view class="userinfo-avatar">
+      <image class="image-user" src="{{userInfo.userimage}}"></image>
+    </view>
+    <view class="userinfo-name" bind:tap="OnLogin">
+      <view>{{userInfo==''?'注册并登录':userInfo.username}}</view>
+    </view>
+  </view>
+  <view class="container1">
+    <view class="control">
+      <view class="controlitem">
+        <view class="item" bind:tap="LookComment">
+          <view>
+            <van-icon name="cloud://cloud1-7g48m2a6e2ac093c.636c-cloud1-7g48m2a6e2ac093c-1320787210/icon/广场（彩色).png" size="60rpx"/>
+          </view>
+          <view>
+            校园动态
+          </view>
+        </view>
+        <view class="item" bind:tap="LookHelp">
+          <view>
+            <van-icon name="cloud://cloud1-7g48m2a6e2ac093c.636c-cloud1-7g48m2a6e2ac093c-1320787210/icon/我的-提问答.png" size="60rpx"/>
+          </view>
+          <view>
+            问答求助
+          </view>
+        </view>
+        <view class="item" bind:tap="LookSale">
+          <view>
+            <van-icon name="cloud://cloud1-7g48m2a6e2ac093c.636c-cloud1-7g48m2a6e2ac093c-1320787210/icon/二手市场.png" size="60rpx" />
+          </view>
+          <view>
+            二手出售
+          </view>
+        </view>
+        <view class="item" bind:tap="LookReturn">
+          <view>
+            <van-icon name="cloud://cloud1-7g48m2a6e2ac093c.636c-cloud1-7g48m2a6e2ac093c-1320787210/icon/失物招领.png" size="60rpx"/>
+          </view>
+          <view>
+            失物招领
+          </view>
+        </view>
+      </view>
+    </view>
+    <view style="margin-top: 30rpx;">
+      <van-cell-group inset custom-class="cardstyle">
+        <van-cell icon="cloud://cloud1-7g48m2a6e2ac093c.636c-cloud1-7g48m2a6e2ac093c-1320787210/icon/公众号@2x.png" title="我的消息" link-type="navigateTo" bind:tap="LookMessage">
+          <van-icon slot="right-icon" name="cloud://cloud1-7g48m2a6e2ac093c.636c-cloud1-7g48m2a6e2ac093c-1320787210/icon/纸飞机.png" />
+        </van-cell>
+        <van-cell icon="cloud://cloud1-7g48m2a6e2ac093c.636c-cloud1-7g48m2a6e2ac093c-1320787210/icon/我的订单@2x.png" title="我的运动信息" link-type="navigateTo" bind:tap="MyOrder">
+          <van-icon slot="right-icon" name="cloud://cloud1-7g48m2a6e2ac093c.636c-cloud1-7g48m2a6e2ac093c-1320787210/icon/搜索.png" />
+        </van-cell>
+      </van-cell-group>
+    </view>
+    <view style="margin-top: 30rpx;">
+      <van-cell-group inset custom-class="cardstyle">
+        <van-cell icon="cloud://cloud1-7g48m2a6e2ac093c.636c-cloud1-7g48m2a6e2ac093c-1320787210/icon/意见反馈@2x.png" title="编辑个人运动信息" bind:tap="MyShopMessage">
+          <van-icon slot="right-icon" name="cloud://cloud1-7g48m2a6e2ac093c.636c-cloud1-7g48m2a6e2ac093c-1320787210/icon/设置.png" />
+        </van-cell>
+        <van-cell icon="cloud://cloud1-7g48m2a6e2ac093c.636c-cloud1-7g48m2a6e2ac093c-1320787210/icon/点评@2x.png" title="修改个人基础信息" bind:tap="MyMessage">
+          <van-icon slot="right-icon" name="cloud://cloud1-7g48m2a6e2ac093c.636c-cloud1-7g48m2a6e2ac093c-1320787210/icon/设置.png" />
+        </van-cell>
+        <van-cell icon="cloud://cloud1-7g48m2a6e2ac093c.636c-cloud1-7g48m2a6e2ac093c-1320787210/icon/星星@2x.png" title="设置个人小新主题" bind:tap="MyTheme">
+          <van-icon slot="right-icon" name="cloud://cloud1-7g48m2a6e2ac093c.636c-cloud1-7g48m2a6e2ac093c-1320787210/icon/设置.png" />
+        </van-cell>
+      </van-cell-group>
+    </view>
+    <view>
+      <view style="margin-top: 30rpx;">
+        <van-cell-group inset custom-class="cardstyle">
+          <van-cell icon="cloud://cloud1-7g48m2a6e2ac093c.636c-cloud1-7g48m2a6e2ac093c-1320787210/icon/绑定公众号 copy@2x.png"  title="分享小程序" bind:click="onClick" >
+            <van-icon slot="right-icon" name="cloud://cloud1-7g48m2a6e2ac093c.636c-cloud1-7g48m2a6e2ac093c-1320787210/icon/纸飞机.png" />
+          </van-cell>
+          <van-share-sheet show="{{ showShare }}" title="立即分享给好友" options="{{ options }}" bind:select="onSelect" bind:close="onClose" />
+        </van-cell-group>
+      </view>
+    </view>
+    <view style="margin-top: 30rpx;">
+      <van-cell-group inset custom-class="cardstyle">
+        <van-cell icon="cloud://cloud1-7g48m2a6e2ac093c.636c-cloud1-7g48m2a6e2ac093c-1320787210/icon/关于我们@2x.png" title="关于我们" label="喵喵鱼汤(微信公众号)——点击关联公众号" bindtap="connect">
+          <van-icon slot="right-icon" name="cloud://cloud1-7g48m2a6e2ac093c.636c-cloud1-7g48m2a6e2ac093c-1320787210/icon/链接.png" />
+        </van-cell>
+      </van-cell-group>
+    </view>
+  </view>
+  <van-toast id="van-toast" />
+  <view class="zwbar"></view>
+</view>
+<view>
+  <van-tabbar active="{{ active }}" active-color="#07c160" inactive-color="#000" bind:change="onChange">
+    <van-tabbar-item url="/pages/index/index" name="home">
+      <image
+      slot="icon"
+      src="cloud://cloud1-7g48m2a6e2ac093c.636c-cloud1-7g48m2a6e2ac093c-1320787210/icon/广场-copy.png"
+      mode="aspectFit"
+      style="width: 30px; height: 18px;"
+    />
+    <image
+      slot="icon-active"
+      src="cloud://cloud1-7g48m2a6e2ac093c.636c-cloud1-7g48m2a6e2ac093c-1320787210/icon/广场选中.png"
+      mode="aspectFit"
+      style="width: 45px; height: 27px;"
+    />
+    广场
+    </van-tabbar-item>
+    <van-tabbar-item url="/pages/service/service" name="service" >
+      <image
+      slot="icon"
+      src="cloud://cloud1-7g48m2a6e2ac093c.636c-cloud1-7g48m2a6e2ac093c-1320787210/icon/模版广场.png"
+      mode="aspectFit"
+      style="width: 30px; height: 18px;"
+    />
+    <image
+      slot="icon-active"
+      src="cloud://cloud1-7g48m2a6e2ac093c.636c-cloud1-7g48m2a6e2ac093c-1320787210/icon/服务.png"
+      mode="aspectFit"
+      style="width: 45px; height: 27px;"
+    />
+    服务
+    </van-tabbar-item>
+    <van-tabbar-item url="/pages/tree/tree" name="tree">
+      <image
+      slot="icon"
+      src="cloud://cloud1-7g48m2a6e2ac093c.636c-cloud1-7g48m2a6e2ac093c-1320787210/image.png"
+      mode="aspectFit"
+      style="width: 45px; height: 45px;"
+    />
+    </van-tabbar-item>
+    <van-tabbar-item url="/pages/Motion/Motion" name="money">
+      <image
+      slot="icon"
+      src="cloud://cloud1-7g48m2a6e2ac093c.636c-cloud1-7g48m2a6e2ac093c-1320787210/icon/篮球.png"
+      mode="aspectFit"
+      style="width: 30px; height: 18px;"
+    />
+    <image
+      slot="icon-active"
+      src="cloud://cloud1-7g48m2a6e2ac093c.636c-cloud1-7g48m2a6e2ac093c-1320787210/icon/心里健康.png"
+      mode="aspectFit"
+      style="width: 45px; height: 27px;"
+    />
+    运动
+    </van-tabbar-item>
+    <van-tabbar-item url="/pages/mySet/mySet" name="user">
+      <image
+      slot="icon"
+      src="cloud://cloud1-7g48m2a6e2ac093c.636c-cloud1-7g48m2a6e2ac093c-1320787210/icon/我的.png"
+      mode="aspectFit"
+      style="width: 30px; height: 18px;"
+    />
+    <image
+      slot="icon-active"
+      src="cloud://cloud1-7g48m2a6e2ac093c.636c-cloud1-7g48m2a6e2ac093c-1320787210/icon/我的-copy.png"
+      mode="aspectFit"
+      style="width: 45px; height: 27px;"
+    />
+    我的
+    </van-tabbar-item>
+  </van-tabbar>
+</view>
+<van-notify id="van-notify" />

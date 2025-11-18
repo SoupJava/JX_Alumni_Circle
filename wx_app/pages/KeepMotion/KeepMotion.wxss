@@ -1,0 +1,42 @@
+
+page{
+  background-color: rgb(0,172,132);
+}
+.circle{
+  margin-top: 80rpx;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 40rpx;
+}
+.van-count-down{
+  font-size: 80rpx !important;
+  color:white !important;
+}
+.bbutton{
+  font-size: large !important;
+  font-weight: bolder;
+  box-shadow: 0 0 0 2rpx rgb(34, 34, 34) !important;
+  margin-bottom: 50rpx;
+}
+.cell{
+  margin-top: 280rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
+  /* background-color: white; */
+}
+.box{
+  margin-top: 20rpx;
+  margin-bottom: 20rpx;
+  padding-left:20rpx;
+  padding-right: 20rpx;
+  /* border:5rpx solid; */
+  border-radius: 10rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+  font-weight: bolder;
+}

@@ -1,0 +1,94 @@
+/* pages/InClassCollection/InClassCollection.wxss */
+page{
+  background-color: rgba(255, 255, 255, 0.877);
+}
+.AddPlan{
+  top:75%;
+  left: 80%;
+  display: flex;
+  position: fixed;
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 100%;
+  background-color: rgb(255, 166, 0);
+  align-items: center;
+  justify-content: center;
+  z-index: 3;
+}
+
+.top{
+  display: flex;
+  height: 200rpx;
+  flex-direction: row;
+  margin-bottom: 10rpx;
+}
+.top .image{
+  display: block;
+  flex-grow: 1;
+  padding: 10rpx;
+  padding-left: 20rpx;
+}
+.top .message{
+  display:flex;
+  flex-grow: 3;
+  align-items: center !important;
+}
+.menu-tabs{
+  width: 94%;
+  margin-left: 2%;
+}
+.menu-tabs .van-tab--active{
+  color: #FFFFFF; /* 字体颜色 */
+  background-color: rgb(0,172,132);/* 标签背景颜色 */
+  border-radius: 20rpx;/* 圆角标签背景 */
+ }
+.menu-tabs .van-tabs__line{
+  background-color: rgb(0,172,132);/* 线条颜色 */
+  width: 0px;/*宽度 */
+  height: 0px;/* 高度 */
+ }
+ .SecMessage{
+   height: 100%;
+ }
+ .SecMessage .Message{
+  background-color: white;
+  display: flex;
+  flex-direction: row;
+  height: 150rpx;
+  width: 100%;
+  align-items: center;
+}
+.SecMessage .Message .Picture{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 3;
+}
+.SecMessage .Message .MessageDesc{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+  flex-grow: 14;
+}
+.SecMessage .Message .MessageDesc .Name{
+  display: flex;
+  color: black;
+  font-weight: 500;
+  flex-direction: column-reverse;
+}
+.SecMessage .Message .Other{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 20rpx;
+  height: 100%;
+  flex-grow: 3;
+}
+.SecMessage .Message .Other .Time{
+  display: flex;
+  flex-direction: row-reverse;
+  color: gray;
+  font-weight: 300;
+  font-size: small;
+}

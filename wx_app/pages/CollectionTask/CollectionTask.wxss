@@ -1,0 +1,157 @@
+/* pages/CollectionTask/CollectionTask.wxss */
+page{
+  background-color: rgba(255, 255, 255, 0.877);
+}
+.AddPlan{
+  left: 10%;
+  bottom: 3%;
+  /* display: flex; */
+  width: 80%;
+  position: fixed;
+  /* align-items: center;
+  justify-content: center; */
+  z-index: 3;
+}
+
+.top{
+  display: flex;
+  /* height: 350rpx; */
+  flex-direction: column;
+  margin: 10rpx;
+}
+.top .title{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: large;
+  font-weight: bolder;
+  margin: 5rpx;
+}
+.top .content{
+  height: 200rpx;
+  margin: 5rpx;
+}
+.top .content .text{
+  text-overflow:ellipsis;
+  word-wrap:break-word;
+}
+.top .time{
+  display: flex;
+  flex-direction: row-reverse;
+  margin-right:10rpx;
+  font-size: small;
+  font-weight: bold;
+  color: #353535;
+}
+.top .setting{
+  display: flex;
+  flex-direction: row-reverse;
+  color: #353535;
+}
+.menu-tabs{
+  width: 94%;
+  margin-left: 2%;
+}
+.menu-tabs .van-tab--active{
+  color: #FFFFFF; /* 字体颜色 */
+  background-color: rgb(0,172,132);/* 标签背景颜色 */
+  border-radius: 20rpx;/* 圆角标签背景 */
+ }
+.menu-tabs .van-tabs__line{
+  background-color: rgb(0,172,132);/* 线条颜色 */
+  width: 0px;/*宽度 */
+  height: 0px;/* 高度 */
+ }
+ .userid{
+  display: flex;
+  flex-direction:row;
+  align-items:center;
+}
+.sj{
+  font-size:small;
+  color: gray;
+}
+.detail{
+  color:gray;
+}
+
+/* 校园动态 */
+
+.moments{
+margin: 3%;
+}
+.documents{
+margin-left: 3rem;
+}
+.photo-view{
+margin-bottom: 20rpx;
+display: inline-block;
+}
+.photo{
+background: rgb(185, 185, 185);  
+float: left;
+margin-right: 10rpx;
+margin-top: 10rpx;
+}
+.discuss-view{
+background: white;
+width: 97%;
+}
+
+.discuss{
+background: rgb(235, 235, 235);
+line-height: 35rpx;
+}
+
+.discuss label{
+font-size: 12px;
+}
+
+.discuss-user{
+color: rgb(88, 103, 138);
+}
+.SecMessage{
+  height: 100%;
+}
+.SecMessage .Message{
+ background-color: white;
+ display: flex;
+ flex-direction: row;
+ height: 150rpx;
+ width: 100%;
+ align-items: center;
+}
+.SecMessage .Message .Picture{
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ flex-grow: 3;
+}
+.SecMessage .Message .MessageDesc{
+ display: flex;
+ flex-direction: column;
+ justify-content: center;
+ height: 100%;
+ flex-grow: 14;
+}
+.SecMessage .Message .MessageDesc .Name{
+ display: flex;
+ color: black;
+ font-weight: 500;
+ flex-direction: column-reverse;
+}
+.SecMessage .Message .Other{
+ display: flex;
+ flex-direction: column;
+ justify-content: center;
+ padding: 20rpx;
+ height: 100%;
+ flex-grow: 3;
+}
+.SecMessage .Message .Other .Time{
+ display: flex;
+ flex-direction: row-reverse;
+ color: gray;
+ font-weight: 300;
+ font-size: small;
+}

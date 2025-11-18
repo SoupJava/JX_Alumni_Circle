@@ -1,0 +1,91 @@
+<!--pages/CountDay/CountDay.wxml-->
+<van-notify id="van-notify" />
+<view class="add">
+  <van-button bind:tap="add" round custom-class="van-button" color="rgb(2,0,0)" type="primary" icon="cloud://cloud1-7g48m2a6e2ac093c.636c-cloud1-7g48m2a6e2ac093c-1320787210/icon/添加 (1).png">
+  </van-button>
+</view>
+<view class="top">
+  <view class="topday">{{message[0].day}}天</view>
+  <view style="width: 80%;">
+    <van-divider customStyle="color:black;font-size: 18px;" custom-class="van-divider" contentPosition="center">
+      <van-icon size="40px" color="black" name="{{message[0].img}}" />
+    </van-divider>
+  </view>
+  <view class="topdes">距离{{message[0].pMessage}}还有</view>
+</view>
+<view class="other">
+  <view wx:for="{{message}}">
+    <view class="Message" bind:tap="deleteM" data-id="{{item.uuid}}">
+      <view class="Picture">
+        <van-image round width="100rpx" height="100rpx" src="{{item.img}}" />
+      </view>
+      <view class="MessageDesc">
+        <view class="Name">
+          距离{{item.pMessage}}还有
+        </view>
+        <view class="jyMessage">
+          {{item.pTime}}
+        </view>
+      </view>
+      <view class="Other">
+        <text class="Time">
+          {{item.day}}
+        </text>
+        <view class="Num">
+          <view class="icon">
+            天
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+<view>
+  <van-overlay show="{{ showplan }}" z-index="4">
+    <view class="wrapper">
+      <view class="block">
+        <view class="close" bindtap="closeAdd">
+          <van-icon name="cross" />
+        </view>
+        <view class="inputplan">
+          <view style="display: flex;flex-direction: column;margin-right: 10rpx;">
+            <van-icon name="circle" />
+          </view>
+          <textarea class="areatext" value="{{planmessage.pMessage}}" maxlength="60" auto-heigh="true" placeholder-style="color:gray;" placeholder="请输入计划内容" bindinput="inputChange"></textarea>
+        </view>
+        <view style="margin-left: 25rpx;">请选择图标:
+          <van-icon size="20px" name="{{planmessage.img}}" />
+        </view>
+        <scroll-view scroll-x style="display: flex; flex-direction: row;white-space: nowrap;">
+          <van-icon size="60px" name="cloud://cloud1-7g48m2a6e2ac093c.636c-cloud1-7g48m2a6e2ac093c-1320787210/icon/生日蛋糕.png" data-img="cloud://cloud1-7g48m2a6e2ac093c.636c-cloud1-7g48m2a6e2ac093c-1320787210/icon/生日蛋糕.png" bind:tap="selectImg"/>
+          <van-icon size="60px" name="cloud://cloud1-7g48m2a6e2ac093c.636c-cloud1-7g48m2a6e2ac093c-1320787210/icon/节日.png" data-img="cloud://cloud1-7g48m2a6e2ac093c.636c-cloud1-7g48m2a6e2ac093c-1320787210/icon/节日.png" bind:tap="selectImg"/>
+          <van-icon size="60px" name="cloud://cloud1-7g48m2a6e2ac093c.636c-cloud1-7g48m2a6e2ac093c-1320787210/icon/礼物.png" data-img="cloud://cloud1-7g48m2a6e2ac093c.636c-cloud1-7g48m2a6e2ac093c-1320787210/icon/礼物.png" bind:tap="selectImg"/>
+          <van-icon size="60px" name="cloud://cloud1-7g48m2a6e2ac093c.636c-cloud1-7g48m2a6e2ac093c-1320787210/icon/消息提醒.png" data-img="cloud://cloud1-7g48m2a6e2ac093c.636c-cloud1-7g48m2a6e2ac093c-1320787210/icon/消息提醒.png" bind:tap="selectImg"/>
+          <van-icon size="60px" name="cloud://cloud1-7g48m2a6e2ac093c.636c-cloud1-7g48m2a6e2ac093c-1320787210/icon/电话.png" data-img="cloud://cloud1-7g48m2a6e2ac093c.636c-cloud1-7g48m2a6e2ac093c-1320787210/icon/电话.png" bind:tap="selectImg"/>
+          <van-icon size="60px" name="cloud://cloud1-7g48m2a6e2ac093c.636c-cloud1-7g48m2a6e2ac093c-1320787210/icon/广场（彩色).png" data-img="cloud://cloud1-7g48m2a6e2ac093c.636c-cloud1-7g48m2a6e2ac093c-1320787210/icon/广场（彩色).png" bind:tap="selectImg"/>
+          <van-icon size="60px" name="cloud://cloud1-7g48m2a6e2ac093c.636c-cloud1-7g48m2a6e2ac093c-1320787210/icon/思考.png" data-img="cloud://cloud1-7g48m2a6e2ac093c.636c-cloud1-7g48m2a6e2ac093c-1320787210/icon/思考.png" bind:tap="selectImg"/>
+          <van-icon size="60px" name="cloud://cloud1-7g48m2a6e2ac093c.636c-cloud1-7g48m2a6e2ac093c-1320787210/icon/学习经历.png" data-img="cloud://cloud1-7g48m2a6e2ac093c.636c-cloud1-7g48m2a6e2ac093c-1320787210/icon/学习经历.png" bind:tap="selectImg"/>
+          <van-icon size="60px" name="cloud://cloud1-7g48m2a6e2ac093c.636c-cloud1-7g48m2a6e2ac093c-1320787210/icon/我的选中.png" data-img="cloud://cloud1-7g48m2a6e2ac093c.636c-cloud1-7g48m2a6e2ac093c-1320787210/icon/我的选中.png" bind:tap="selectImg"/>
+        </scroll-view>
+        <view class="doit">
+          <view class="settime">
+            <view bind:tap="showseltime" style="background-color: rgb(235, 235, 235);padding: 15rpx;border-radius: 10rpx;">
+              <view>
+                <van-icon name="clock-o" /> {{planmessage.pTime==''?'设置提醒时间':planmessage.pTime}}
+              </view>
+            </view>
+          </view>
+          <view class="done" style="color: {{planmessage.img==''||planmessage.pMessage==''||planmessage.pTime==''?'#ECECEC':'black'}};" bind:tap="addok">
+            完成
+          </view>
+        </view>
+      </view>
+    </view>
+  </van-overlay>
+</view>
+<view>
+  <van-action-sheet show="{{ seltime }}" title="{{datetime.showDate}}" bind:close="closeseltime">
+    <van-datetime-picker type="date" value="{{ datetime.currentDate }}" min-date="{{ datetime.minDate }}" max-date="{{ datetime.maxDate }}" bind:input="changeplantime" bind:confirm="confirmtime" bind:cancel="cancelseltime" />
+  </van-action-sheet>
+</view>
+<van-dialog id="van-dialog" />

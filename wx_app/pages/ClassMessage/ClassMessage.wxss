@@ -1,0 +1,87 @@
+/* pages/ClassMessage/ClassMessage.wxss */
+.AddPlan{
+  left: 10%;
+  bottom: 3%;
+  /* display: flex; */
+  width: 80%;
+  position: fixed;
+  /* align-items: center;
+  justify-content: center; */
+  z-index: 3;
+}
+.top{
+  display: flex;
+  height: 200rpx;
+  flex-direction: row;
+  margin-bottom: 10rpx;
+}
+.top .image{
+  display: block;
+  flex-grow: 1;
+  padding: 10rpx;
+  padding-left: 20rpx;
+}
+.top .message{
+  display:flex;
+  flex-grow: 3;
+  align-items: center !important;
+}
+.topbar{
+  height: 10%;
+}
+.Message{
+  background-color: white;
+  display: flex;
+  flex-direction: row;
+  height: 150rpx;
+  width: 100%;
+  /* justify-content: center; */
+  align-items: center;
+}
+.Message .Picture{
+  display: flex;
+  /* padding-left: 5rpx; */
+  justify-content: center;
+  align-items: center;
+  flex-grow: 3;
+  /* width: 15%; */
+}
+.Message .MessageDesc{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  /* padding: 20rpx; */
+  height: 100%;
+  flex-grow: 14;
+  /* width: 70%; */
+}
+.Message .MessageDesc .Name{
+  font-weight: bolder;
+}
+
+
+.wrapper{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  z-index: 2;
+}
+.wrapper .joinclass{
+  display: flex;
+  background-color: #fff;
+  padding: 10rpx;
+  flex-direction: column;
+}
+.wrapper .createclass{
+  display: flex;
+  background-color: #fff;
+  padding: 10rpx;
+  flex-direction: column;
+}
+.wrapper .exit{
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  padding: 20rpx;
+}

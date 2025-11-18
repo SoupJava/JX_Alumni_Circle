@@ -1,0 +1,49 @@
+<!--pages/CorrectMotion/CorrectMotion.wxml-->
+<van-notify id="van-notify" />
+<view class="regist">
+  <view class="welcome">
+    <view class='eye'>
+      <view class="left">
+        <view class="leftl"></view>
+      </view>
+      <view class="right">
+        <view class="rightl"></view>
+      </view>
+    </view>
+  </view>
+  <view class="bg">
+    <view class='box'>
+      <van-cell-group>
+        <van-field model:value="{{ height }}" clearable left-icon="smile" label="身高（cm）" placeholder="请输入身高" bind:click-icon="onClickIcon" />
+      </van-cell-group>
+      <van-cell-group>
+        <van-field model:value="{{ age }}" clearable left-icon="manager" label="年龄" placeholder="请输入年龄" bind:click-icon="onClickIcon" />
+      </van-cell-group>
+      <van-cell-group>
+        <van-field model:value="{{ weight }}" clearable left-icon="location" label="体重（kg）" placeholder="请输入体重" bind:click-icon="onClickIcon" />
+      </van-cell-group>
+      <view class="sex">
+        <van-icon name="friends" />
+        <view class="label">性别</view>
+        <view class="sel">
+          <view class="sel2">
+            <van-radio-group value="{{ sex }}" bind:change="ChangeSex" direction="horizontal">
+              <van-radio name="0" icon-size="30rpx">
+                <view class="text">
+                  男
+                </view>
+              </van-radio>
+              <van-radio name="1" icon-size="30rpx" style="margin-left:20rpx;">
+                <view class="text">
+                  女
+                </view>
+              </van-radio>
+            </van-radio-group>
+          </view>
+        </view>
+      </view>
+      <van-button type="primary" size="large" bind:tap="keep">保 存</van-button>
+    </view>
+  </view>
+</view>
+<van-toast id="van-toast" />

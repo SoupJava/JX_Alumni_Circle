@@ -1,0 +1,54 @@
+/* pages/Motion/Motion.wxss */
+.topdes{
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  z-index: 2;
+  background-color: rgba(0,172,132,0);
+  font-weight: bold;
+  font-size: normal;
+  height: 350px;
+  color: white;
+  /* justify-content: center; */
+  width: 100%;
+}
+
+.top{
+  height: 350px;
+  background-color: rgb(0,172,132);
+  display: flex;
+  justify-content: center;
+}
+.ChoiceMotion{
+  margin-top: -60rpx;
+  border-top-left-radius: 40rpx;
+  border-top-right-radius: 40rpx;
+  display: flex;
+  background-color: white;
+  flex-direction: column;
+}
+.colum{
+  display: flex;
+  flex-direction: row;
+}
+.cell{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
+  background-color: white;
+}
+.box{
+  margin-top: 20rpx;
+  margin-bottom: 20rpx;
+  padding-left:20rpx;
+  padding-right: 20rpx;
+  border:5rpx solid;
+  border-radius: 10rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+  font-weight: bolder;
+}

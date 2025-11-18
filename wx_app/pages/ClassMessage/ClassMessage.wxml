@@ -1,0 +1,106 @@
+<!--pages/ClassMessage/ClassMessage.wxml-->
+<view class="AddPlan">
+  <block wx:if="{{class==''}}">
+    <van-button round type="primary" size="large" bind:click="onClickShow">加入/创建班级 </van-button>
+  </block>
+  <block wx:else>
+    <van-button round type="danger" size="large" bind:click="OKShow">退出/解散班级 </van-button>
+  </block>
+</view>
+<block wx:if="{{class==''}}">
+  <van-empty description="暂时没有班级哟" />
+</block>
+<block wx:else>
+  <view class="top">
+    <view class="image">
+      <van-image width="100" height="100" src="cloud://cloud1-7g48m2a6e2ac093c.636c-cloud1-7g48m2a6e2ac093c-1320787210/icon/logo.png" />
+    </view>
+    <view class="message">
+      <view style="width: 100%;">
+        <van-cell icon="friends" label="班级人数：{{class.student.length}}人" size="large" title="{{class.classname}}">
+          <van-icon slot="right-icon" name="setting-o" color="green" />
+        </van-cell>
+      </view>
+    </view>
+  </view>
+</block>
+<view>
+  <view wx:if="{{class.student.length<=0}}">
+    <van-empty description="当前没有学生哟" />
+  </view>
+  <view wx:else>
+    <view wx:for="{{class.student}}">
+      <view class="Message" bind:tap="LookUser" data-id="{{item.openid}}">
+        <view class="Picture">
+          <van-image round width="100rpx" height="100rpx" src="cloud://cloud1-7g48m2a6e2ac093c.636c-cloud1-7g48m2a6e2ac093c-1320787210/userImage/{{item.openid}}.png" />
+        </view>
+        <view class="MessageDesc">
+          <view class="Name">
+            {{item.name}}
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="zwbar">
+  </view>
+</view>
+<van-overlay show="{{ show }}">
+  <view class="wrapper">
+    <van-tabs active="{{ active }}">
+      <van-tab title="加入班级">
+        <view class="joinclass">
+          <van-cell-group>
+            <van-field model:value="{{ classidForJ }}" label="班级id" placeholder="请输入班级id" border="{{ false }}" bind:change="onChange" />
+            <van-field model:value="{{ classkeyForJ }}" label="班级key" placeholder="请输入班级key" border="{{ false }}" bind:change="onChange" />
+            <van-field model:value="{{ nameForJ }}" label="我的备注" placeholder="你在班级中的名字" border="{{ false }}" bind:change="onChange" />
+          </van-cell-group>
+          <view style="display:flex;flex-direction:row;padding:10rpx;">
+            <view style="display: flex;flex-direction: row;flex-grow: 1;">
+              <van-button type="primary" bind:tap="onClickHide">取 消</van-button>
+            </view>
+            <view style="display: flex;flex-direction: row-reverse;flex-grow: 1;">
+              <van-button type="primary" bind:tap="joinClass">加 入</van-button>
+            </view>
+          </view>
+        </view>
+      </van-tab>
+      <van-tab title="创建班级">
+        <view class="createclass">
+          <van-cell-group>
+            <van-field model:value="{{ classname }}" label="班级名称" placeholder="请输入班级名称" border="{{ false }}" />
+            <van-field model:value="{{ classkey }}" label="班级key" placeholder="请输入班级key" border="{{ false }}"/>
+            <van-field model:value="{{ nameForC }}" label="我的备注" placeholder="你在班级中的名字" border="{{ false }}" />
+          </van-cell-group>
+          <view style="display:flex;flex-direction:row;padding:10rpx;">
+            <view style="display: flex;flex-direction: row;flex-grow: 1;">
+              <van-button type="primary" bind:tap="onClickHide">取 消</van-button>
+            </view>
+            <view style="display: flex;flex-direction: row-reverse;flex-grow: 1;">
+              <van-button type="primary" bind:tap="createClass">创 建</van-button>
+            </view>
+          </view>
+        </view>
+      </van-tab>
+    </van-tabs>
+  </view>
+</van-overlay>
+<van-overlay show="{{ AreYouOK }}">
+  <view class="wrapper">
+    <view class="exit">
+      <view style="font-weight: bolder;">
+        删除或解散后会有意想不到的后果哟
+      </view>
+      <van-divider />
+      <view style="display:flex;flex-direction:row;padding:10rpx;">
+        <view style="display: flex;flex-direction: row;flex-grow: 1;">
+          <van-button type="primary" bind:tap="OKHide">取 消</van-button>
+        </view>
+        <view style="display: flex;flex-direction: row-reverse;flex-grow: 1;">
+          <van-button type="primary" bind:tap="deleteClass">确 定</van-button>
+        </view>
+      </view>
+    </view>
+  </view>
+</van-overlay>
+<van-notify id="van-notify" />

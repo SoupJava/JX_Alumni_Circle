@@ -1,0 +1,52 @@
+<!--pages/message/message.wxml-->
+<van-notify id="van-notify" />
+<view>
+  <van-tabs swipeable animated sticky>
+    <van-tab title="私信">
+      <!-- <van-empty description="当前没有私信哟" /> -->
+      <scroll-view scroll-x="false" scroll-y class="SecMessage">
+        <view class="AIChat" bind:tap="chatWithAI" data-id="{{item.openid}}">
+          <van-icon name="smile-o" color="white" size="40rpx" />
+          <view class="Name">
+            AI聊天
+          </view>
+        </view>
+        <view wx:if="{{messageList==''}}">
+          <van-empty description="当前没有消息哟" />
+        </view>
+        <view wx:else>
+          <view wx:for="{{messageList}}">
+            <view class="Message" bind:tap="chatWith" data-id="{{item.openid2==userinfo.openid?item.openid:item.openid2}}">
+              <view class="Picture">
+                <van-image round width="100rpx" height="100rpx" src="{{item.openid2==userinfo.openid?item.userImage:item.userImage2}}" />
+              </view>
+              <view class="MessageDesc">
+                <view class="Name">
+                  {{item.openid2==userinfo.openid?item.userName:item.userName2}}
+                </view>
+                <view class="jyMessage">
+                  {{item.lastMessage}}
+                </view>
+              </view>
+              <view class="Other">
+                <view class="Time">
+                  {{item.LastSendTime}}
+                </view>
+                <!-- <view class="Num">
+                <view class="icon">
+                  99+
+                </view>
+              </view> -->
+              </view>
+            </view>
+          </view>
+        </view>
+        <view class="zwbar">
+        </view>
+      </scroll-view>
+    </van-tab>
+    <van-tab title="通知">
+      <van-empty description="当前没有通知哟" />
+    </van-tab>
+  </van-tabs>
+</view>

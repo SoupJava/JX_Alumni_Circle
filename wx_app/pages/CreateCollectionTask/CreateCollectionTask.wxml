@@ -1,0 +1,42 @@
+<!--pages/CreateCollectionTask/CreateCollectionTask.wxml-->
+<van-notify id="van-notify" />
+<view class="top">
+  <van-cell-group>
+    <van-field left-icon="todo-list-o" label="任务标题:" model:value="{{title}}" border="{{ false }}">
+    </van-field>
+    <view>
+      <view class="input">
+        <view class="title">
+          <block style="color: black;">⚪</block> 任务要求:
+        </view>
+        <view class="inputshow">
+          <textarea maxlength='500' placeholder-style="color:#5F5F5F;" bindinput='limitWord' model:value="{{message}}" placeholder='尽情发表此刻的心情吧！'></textarea>
+        </view>
+      </view>
+      <view class="clear">
+        <text style="float: right">{{currentWord}}/{{maxWord}}(最多可输入500字)</text>
+      </view>
+      <van-divider />
+      <view class="inputpic">
+        <view>
+          <van-uploader file-list="{{ ImageTemp }}" bind:delete="deleteImg" deletable="{{ true }}" max-count="12" bind:after-read="afterRead" />
+        </view>
+      </view>
+      <van-divider />
+    </view>
+  </van-cell-group>
+</view>
+
+<view class="bottom" bind:tap="showseltime">
+  <van-cell title="截止日期" value="{{time==''?'点击选择截至时间':time}}" />
+</view>
+
+<view class="submit">
+  <van-button round type="primary" icon="plus" size="large" bind:tap="sendComment">立 即 发 布 </van-button>
+</view>
+
+<view>
+  <van-action-sheet show="{{ seltime }}" title="{{datetime.showDate}}" bind:close="closeseltime">
+    <van-datetime-picker type="datetime" value="{{ datetime.currentDate }}" min-date="{{ datetime.minDate }}" max-date="{{ datetime.maxDate }}" bind:input="changeseltime" bind:confirm="confirmtime" bind:cancel="closeseltime" />
+  </van-action-sheet>
+</view>

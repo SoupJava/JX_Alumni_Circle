@@ -1,0 +1,25 @@
+<!--pages/StaTomato/StaTomato.wxml-->
+<van-notify id="van-notify" />
+<view class="line">
+  <ec-canvas force-use-old-canvas="true" style="width: 100%; height: 1000px;" id="mychart-multi" ec="{{ ecage }}"></ec-canvas>
+</view>
+<!-- <view>
+  <view class="choice">
+    <van-grid column-num="3" custom-class="grid">
+      <van-grid-item icon="cloud://cloud1-7g48m2a6e2ac093c.636c-cloud1-7g48m2a6e2ac093c-1320787210/icon/works.png" text="工作:{{lineops[0].value}}分钟" />
+      <van-grid-item icon="cloud://cloud1-7g48m2a6e2ac093c.636c-cloud1-7g48m2a6e2ac093c-1320787210/icon/学习经历.png" text="学习:{{lineops[1].value}}分钟" />
+      <van-grid-item icon="cloud://cloud1-7g48m2a6e2ac093c.636c-cloud1-7g48m2a6e2ac093c-1320787210/icon/思考.png" text="思考:{{lineops[2].value}}分钟" />
+      <van-grid-item icon="cloud://cloud1-7g48m2a6e2ac093c.636c-cloud1-7g48m2a6e2ac093c-1320787210/icon/写作.png" text="写作:{{lineops[3].value}}分钟" />
+      <van-grid-item icon="cloud://cloud1-7g48m2a6e2ac093c.636c-cloud1-7g48m2a6e2ac093c-1320787210/icon/阅读.png" text="阅读:{{lineops[4].value}}分钟" />
+      <van-grid-item icon="cloud://cloud1-7g48m2a6e2ac093c.636c-cloud1-7g48m2a6e2ac093c-1320787210/icon/其他.png" text="其他:{{lineops[5].value}}分钟" />
+    </van-grid>
+  </view>
+</view> -->
+<van-divider contentPosition="center">共计：{{alltime}}min</van-divider>
+<scroll-view scroll-y style="height: 450rpx;">
+  <view wx:for="{{motion}}" style="margin-bottom: 10rpx;">
+    <van-cell-group inset>
+      <van-cell icon="{{item.img}}" title="{{item.name}}" value="{{item.fruit}}min" label="{{item.begintime}}" />
+    </van-cell-group>
+  </view>
+</scroll-view>

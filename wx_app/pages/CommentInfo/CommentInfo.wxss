@@ -1,0 +1,115 @@
+/* pages/CommentInfo/CommentInfo.wxss */
+.page{
+  display: flex;
+  flex-direction: column;
+}
+.userid{
+  display: flex;
+  flex-direction:row;
+  align-items:center;
+}
+.container-id{
+  color: black;
+  font-weight: bolder;
+}
+.sj{
+  font-size:small;
+  color: gray;
+}
+.detail{
+  color:gray;
+}
+
+.moments{
+  margin: 3%;
+}
+.documents{
+  margin: 3%;
+}
+.documents .fonttext{
+  text-overflow:ellipsis; 
+  word-wrap:break-word;
+}
+.photo-view{
+  margin-top: 20rpx;
+  margin-bottom: 20rpx;
+}
+.photo{
+  background: rgb(255, 166, 0);  
+  float: left;
+  margin-right: 10rpx;
+  margin-top: 10rpx;
+}
+.dzpl{
+  display: flex;
+  flex-direction: row;
+  margin-top: 10rpx;
+  margin-bottom: 20rpx;
+}
+.correct{
+  display: flex;
+  flex-direction: row;
+}
+.correct .dm{
+  display: flex;
+  flex-direction: row-reverse;
+  flex-grow: 1;
+}
+/* .discuss-view{
+  background: white;
+  width: 97%;
+}
+
+.discuss{
+  background: rgb(235, 235, 235);
+  line-height: 35rpx;
+}
+
+.discuss label{
+  font-size: 12px;
+}
+
+.discuss-user{
+  color: rgb(88, 103, 138);
+} */
+.discuss{
+  margin: 10rpx;
+}
+.discuss .message{
+  margin-left:3rem;
+  text-overflow:ellipsis; 
+  word-wrap:break-word;
+}
+.discuss .childChat{
+  margin-left:1rem;
+  margin-top: 1rem;
+}
+.discuss .childChat .userid{
+  display: flex;
+  flex-direction:row;
+  align-items:center;
+}
+.discuss .childChat .userid .container-id{
+    color: black;
+    font-weight: bold;
+    font-size: 200;
+}
+.discuss .childChat .userid .sj{
+  font-size:80;
+  color: gray;
+}
+.discuss .childChat .message{
+  font-size: 100;
+  margin-left:2rem;
+  text-overflow:ellipsis; 
+  word-wrap:break-word;
+}
+.foot {
+  width: 686rpx;
+  padding: 17rpx 32rpx;
+  background-color: #FFFFFF;
+  box-shadow: 0rpx -1rpx 4rpx 0rpx rgba(0, 0, 0, 0.08);
+  position: fixed;
+  bottom: 0;
+  left: 0;
+}

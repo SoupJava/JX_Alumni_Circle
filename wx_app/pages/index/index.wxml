@@ -1,0 +1,307 @@
+<!--pages/index/index.wxml-->
+<view class="addnew" bind:tap="addnew" data-id="{{item.openid}}">
+  <van-icon name="add" color="white" size="50rpx" />
+  <view class="Name">
+    发布我的内容
+  </view>
+</view>
+<view style="padding-left: 10rpx;padding-right: 10rpx;">
+  <van-search value="{{ serarch }}" placeholder="输入账号/用户名来搜索用户" use-action-slot bind:change="changeSearch" bind:search="onSearch">
+    <view slot="action" bind:tap="onSearch">搜索</view>
+  </van-search>
+</view>
+<view>
+  <van-notice-bar left-icon="volume-o" scrollable text="❤ 小新提醒:请务必遵守圈内规范，如有违规会被删帖，禁言乃至封号！。❤" />
+</view>
+<view>
+  <van-tabs swipeable animated bind:change="ChangeTabs">
+    <van-tab title="校园动态">
+      <scroll-view scroll-y style="height: {{height}}px" bindscrolltolower="loadMore" refresher-background="#00AC84">
+        <view wx:if="{{SchoolComment==''}}">
+          <view wx:for="{{3}}" wx:key="ind">
+            <van-skeleton title avatar row="6" />
+            <van-divider />
+          </view>·
+        </view>
+        <view wx:else>
+          <view wx:for="{{SchoolComment}}" wx:key="index" wx:for-index="i">
+            <view class="moments">
+              <view class="userid" bind:tap="LookUser" data-id="{{item.openid}}">
+                <van-image round width="3rem" height="3rem" fit="cover" src="{{item.userInfo.userImage}}" />
+                <view style="margin-left:5px;">
+                  <view>
+                    <text class="container-id">{{item.userInfo.userName}}</text>
+                  </view>
+                  <view>
+                    <block wx:if="{{item.userInfo.userSex==0}}">
+                      <text style="color:rgb(28, 28, 230)"> ♂ </text>
+                    </block>
+                    <block wx:else>
+                      <text style="color:rgb(196, 53, 43)"> ♀ </text>
+                    </block>
+                    <text class="sj">{{item.sendTime}}</text>
+                  </view>
+                </view>
+              </view>
+              <view class="documents" bind:tap="LookComment" data-id="{{item._id}}">
+                <view class="fonttext">
+                  <text>
+                    {{item.CommentMessage}}
+                  </text>
+                </view>
+                <!-- 图片 -->
+                <view class='photo-view'>
+                  <view class='photo' wx:for='{{item.CommentImage}}' wx:for-item="item2" wx:key="idx" style='width:{{photoWidth}}px;height:{{photoWidth}}px'>
+                    <image src='{{item2}}' style='width:{{photoWidth}}px;height:{{photoWidth}}px'></image>
+                  </view>
+                </view>
+                <!-- 点赞评论操作 -->
+                <view class="dzpl">
+                  <view style="color: #8b751c;">
+                    <van-icon name="cloud://cloud1-7g48m2a6e2ac093c.636c-cloud1-7g48m2a6e2ac093c-1320787210/icon/点赞.png" />
+                    <block>{{item.LoveNum}}</block>
+                  </view>
+                  <view style="margin-left:30rpx; color: #8b751c;">
+                    <van-icon name="cloud://cloud1-7g48m2a6e2ac093c.636c-cloud1-7g48m2a6e2ac093c-1320787210/icon/消息对话.png" />
+                    <block>{{item.ChatNum}}</block>
+                  </view>
+                </view>
+              </view>
+            </view>
+            <van-divider />
+          </view>
+        </view>
+        <view class="zwbar">
+          <block wx:if="{{nomore[0]}}">
+            <van-divider contentPosition="center" customStyle="color: #00AC84; border-color: #00AC84; font-size: 30rpx;">
+              <van-icon name="sign" /> 我也是有底线滴
+            </van-divider>
+          </block>
+        </view>
+      </scroll-view>
+    </van-tab>
+    <van-tab title="问答求助">
+      <view wx:if="{{HelpDiscuss==''}}">
+        <view wx:for="{{5}}" wx:key="ind">
+          <van-skeleton title row="6" />
+          <van-divider />
+        </view>
+      </view>
+      <view wx:else>
+        <scroll-view scroll-y style="height: {{height}}px" bindscrolltolower="loadMore2" refresher-background="#00AC84">
+          <view wx:for="{{HelpDiscuss}}" wx:key="index">
+            <view class="container1">
+              <view class="userid" bind:tap="LookUser" data-id="{{item.openid}}">
+                <van-image round width="3rem" height="3rem" fit="cover" src="{{item.userInfo.userImage}}" />
+                <view style="margin-left:5px;">
+                  <view>
+                    <text class="container-id">{{item.userInfo.userName}}</text>
+                  </view>
+                  <view>
+                    <block wx:if="{{item.userInfo.userSex==0}}">
+                      <text style="color:rgb(28, 28, 230)"> ♂ </text>
+                    </block>
+                    <block wx:else>
+                      <text style="color:rgb(196, 53, 43)"> ♀ </text>
+                    </block>
+                    <text class="sj">{{item.sendTime}}</text>
+                  </view>
+                </view>
+              </view>
+              <view bind:tap="LookHelp" data-id="{{item._id}}" style="margin-top: 5px;margin-left: 5px; display: block;text-overflow:ellipsis; word-wrap:break-word;">
+                <text style="font-weight: bolder;">问: </text>
+                <text>{{item.DiscussMessage}}</text>
+              </view>
+              <view class="detail" style="color: #8b751c;">
+                <van-icon name="cloud://cloud1-7g48m2a6e2ac093c.636c-cloud1-7g48m2a6e2ac093c-1320787210/icon/查看.png" />
+                <text style="font-size: small;margin-right: 20px;">{{item.LookNum}}</text>
+                <van-icon name="cloud://cloud1-7g48m2a6e2ac093c.636c-cloud1-7g48m2a6e2ac093c-1320787210/icon/消息对话.png" />
+                <text style="font-size: small;">{{item.AnswerNum}}</text>
+              </view>
+            </view>
+          </view>
+        </scroll-view>
+        <view class="zwbar">
+          <block wx:if="{{nomore[1]}}">
+            <van-divider contentPosition="center" customStyle="color: #00AC84; border-color: #00AC84; font-size: 30rpx;">
+              <van-icon name="sign" /> 我也是有底线滴
+            </van-divider>
+          </block>
+        </view>
+      </view>
+    </van-tab>
+    <van-tab title="二手出售">
+      <view wx:if="{{shSale==''}}">
+        <view wx:for="{{3}}" wx:key="ind">
+          <van-skeleton title avatar row="6" />
+          <van-divider />
+        </view>
+      </view>
+      <view wx:else>
+        <scroll-view scroll-y style="height: {{height}}px;" bindscrolltolower="loadMore3" refresher-background="#00AC84">
+          <view wx:for="{{shSale}}" wx:key="index">
+            <view bind:tap="LookSale" data-id="{{item._id}}" class="goodlist" style="width:{{(goodWidth-40)/2}}px;" data-openid="{{item.openId}}">
+              <view>
+                <van-image width="{{(goodWidth-40)/2}}px" height="{{(goodWidth-40)/2}}px" fit="cover" src="{{item.GoodsImage[0]}}" />
+              </view>
+              <view class="goodtext">
+                {{item.SaleMessage}}
+              </view>
+            </view>
+          </view>
+        </scroll-view>
+        <block wx:if="{{nomore[2]}}">
+          <van-divider contentPosition="center" customStyle="color: #00AC84; border-color: #00AC84; font-size: 30rpx;">
+            <van-icon name="sign" /> 我也是有底线滴
+          </van-divider>
+        </block>
+        <view class="zwbar">
+        </view>
+      </view>
+    </van-tab>
+    <van-tab title="失物招领">
+      <view wx:if="{{LossReturn==''}}">
+        <view wx:for="{{3}}" wx:key="ind">
+          <van-skeleton title avatar row="6" />
+          <van-divider />
+        </view>
+      </view>
+      <view wx:else>
+        <scroll-view scroll-y style="height: {{height}}px" bindscrolltolower="loadMore4" refresher-background="#00AC84">
+          <view wx:for="{{LossReturn}}" wx:key="index" wx:for-index="i">
+            <view class="moments">
+              <view class="userid" bind:tap="LookUser" data-id="{{item.openid}}">
+                <van-image round width="3rem" height="3rem" fit="cover" src="{{item.userInfo.userImage}}" />
+                <view style="margin-left:5px;">
+                  <view>
+                    <text class="container-id">{{item.userInfo.userName}}</text>
+                  </view>
+                  <view>
+                    <block wx:if="{{item.userInfo.userSex==0}}">
+                      <text style="color:rgb(28, 28, 230)"> ♂ </text>
+                    </block>
+                    <block wx:else>
+                      <text style="color:rgb(196, 53, 43)"> ♀ </text>
+                    </block>
+                    <text class="sj">{{item.sendTime}}</text>
+                    <block wx:if="{{item.LorR==0}}">
+                      <text style="color:rgb(139, 137, 6)"> 失者 </text>
+                    </block>
+                    <block wx:else>
+                      <text style="color:rgb(139, 6, 121)"> 拾者 </text>
+                    </block>
+                  </view>
+                </view>
+              </view>
+              <view bind:tap="LookReturn" data-id="{{item._id}}" class="documents">
+                <view class="fonttext">
+                  <view>
+                    时间：<text>{{item.recordTime}}</text>
+                  </view>
+                  <view>
+                    地点：<text>{{item.recordPlace}}</text>
+                  </view>
+                  <view>
+                    联系方式：<text>{{item.recordContact}}</text>
+                  </view>
+                  <view>
+                    备注：<text>{{item.recordOther}}</text>
+                  </view>
+                </view>
+                <!-- 图片 -->
+                <view class='photo-view'>
+                  <view class='photo' wx:for='{{item.GoodsImage}}' wx:key="ind" wx:for-item="item2" style='width:{{photoWidth}}px;height:{{photoWidth}}px'>
+                    <image bindtap='LookPhoto' data-who="3" data-ind="{{i}}" data-photUrl='{{item2}}' src='{{item2}}' style='width:{{photoWidth}}px;height:{{photoWidth}}px'></image>
+                  </view>
+                </view>
+              </view>
+            </view>
+            <van-divider />
+          </view>
+          <view class="zwbar">
+            <block wx:if="{{nomore[3]}}">
+              <van-divider contentPosition="center" customStyle="color: #00AC84; border-color: #00AC84; font-size: 30rpx;">
+                <van-icon name="sign" /> 我也是有底线滴
+              </van-divider>
+            </block>
+          </view>
+        </scroll-view>
+      </view>
+    </van-tab>
+  </van-tabs>
+</view>
+
+<view>
+  <van-tabbar active="{{ active }}" active-color="#07c160" inactive-color="#000" bind:change="onChange">
+    <van-tabbar-item url="/pages/index/index" name="home">
+      <image
+      slot="icon"
+      src="cloud://cloud1-7g48m2a6e2ac093c.636c-cloud1-7g48m2a6e2ac093c-1320787210/icon/广场-copy.png"
+      mode="aspectFit"
+      style="width: 30px; height: 18px;"
+    />
+    <image
+      slot="icon-active"
+      src="cloud://cloud1-7g48m2a6e2ac093c.636c-cloud1-7g48m2a6e2ac093c-1320787210/icon/广场选中.png"
+      mode="aspectFit"
+      style="width: 45px; height: 27px;"
+    />
+    广场
+    </van-tabbar-item>
+    <van-tabbar-item url="/pages/service/service" name="service" >
+      <image
+      slot="icon"
+      src="cloud://cloud1-7g48m2a6e2ac093c.636c-cloud1-7g48m2a6e2ac093c-1320787210/icon/模版广场.png"
+      mode="aspectFit"
+      style="width: 30px; height: 18px;"
+    />
+    <image
+      slot="icon-active"
+      src="cloud://cloud1-7g48m2a6e2ac093c.636c-cloud1-7g48m2a6e2ac093c-1320787210/icon/服务.png"
+      mode="aspectFit"
+      style="width: 45px; height: 27px;"
+    />
+    服务
+    </van-tabbar-item>
+    <van-tabbar-item url="/pages/tree/tree" name="tree">
+      <image
+      slot="icon"
+      src="cloud://cloud1-7g48m2a6e2ac093c.636c-cloud1-7g48m2a6e2ac093c-1320787210/image.png"
+      mode="aspectFit"
+      style="width: 45px; height: 45px;"
+    />
+    </van-tabbar-item>
+    <van-tabbar-item url="/pages/Motion/Motion" name="money">
+      <image
+      slot="icon"
+      src="cloud://cloud1-7g48m2a6e2ac093c.636c-cloud1-7g48m2a6e2ac093c-1320787210/icon/篮球.png"
+      mode="aspectFit"
+      style="width: 30px; height: 18px;"
+    />
+    <image
+      slot="icon-active"
+      src="cloud://cloud1-7g48m2a6e2ac093c.636c-cloud1-7g48m2a6e2ac093c-1320787210/icon/心里健康.png"
+      mode="aspectFit"
+      style="width: 45px; height: 27px;"
+    />
+    运动
+    </van-tabbar-item>
+    <van-tabbar-item url="/pages/mySet/mySet" name="user">
+      <image
+      slot="icon"
+      src="cloud://cloud1-7g48m2a6e2ac093c.636c-cloud1-7g48m2a6e2ac093c-1320787210/icon/我的.png"
+      mode="aspectFit"
+      style="width: 30px; height: 18px;"
+    />
+    <image
+      slot="icon-active"
+      src="cloud://cloud1-7g48m2a6e2ac093c.636c-cloud1-7g48m2a6e2ac093c-1320787210/icon/我的-copy.png"
+      mode="aspectFit"
+      style="width: 45px; height: 27px;"
+    />
+    我的
+    </van-tabbar-item>
+  </van-tabbar>
+</view>
+<van-toast id="van-toast" />
+<van-notify id="van-notify" />

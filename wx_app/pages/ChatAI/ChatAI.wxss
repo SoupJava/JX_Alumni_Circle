@@ -1,0 +1,486 @@
+/* pages/ChatAI/ChatAI.wxss */
+.chat{
+  position: absolute;
+  z-index: 3;
+  height: 100%;
+  min-height: 100%;
+  width: 100%;
+}
+.chat .chatmessage{
+  display: flex;
+  flex-direction: column-reverse;
+  width: 100%;
+  height: 600rpx;
+}
+.chat .chatmessage .AIChat{
+  display: flex;
+  flex-direction: row;
+  max-width: 85%;
+}
+.chat .chatmessage .MyChat{
+  display: flex;
+  flex-direction: row-reverse;
+  margin-left: 15%;
+  max-width: 85%;
+  margin-bottom: 20rpx;
+  margin-top: 20rpx;
+}
+.chat .chatmessage .AIChat .userid{
+  display: flex;
+  flex-direction:row;
+  margin:10rpx;
+}
+.chat .chatmessage .MyChat .userid{
+  display: flex;
+  flex-direction:row-reverse;
+  margin:10rpx;
+}
+.chat .chatmessage .AIChat .messagebg{
+  max-width: 80%;
+  display: flex;
+  background-color: rgba(236, 236, 236, 0.95);
+  border-radius: 20rpx;
+  padding:0rpx 30rpx 30rpx 30rpx;
+  font-weight: bold;
+}
+.chat .chatmessage .MyChat .messagebg{
+  max-width: 80%;
+  display: flex;
+  background-color: rgba(236, 236, 236, 0.95);
+  border-radius: 20rpx;
+  padding:0rpx 30rpx 30rpx 30rpx;
+  font-weight: bold;
+  margin-right: 10rpx;
+}
+.chat .foot {
+  width: 686rpx;
+  padding: 17rpx 32rpx;
+  background-color: #FFFFFF;
+  box-shadow: 0rpx -1rpx 4rpx 0rpx rgba(0, 0, 0, 0.08);
+  position: fixed;
+  bottom: 0;
+  left: 0;
+}
+.page {
+  height: 100%;
+  background-color: rgb(0, 172, 132);
+  min-height: 100%;
+  width: 100%;
+  position: absolute;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+.regist{
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+.welcome{
+  padding: 5%;
+  color: #fff;
+  font-size: 40rpx;
+  font-weight: bold;
+}
+/* 向下看 */
+.welcome .eye0 {
+  display: flex;
+  flex-direction: row;
+  margin-top: 100rpx;
+  height: 150rpx;
+}
+
+.welcome .eye0 .left {
+  display: flex;
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 100%;
+  border-style: solid;
+  border-width: 40rpx;
+  animation-duration: 6s;
+  animation-iteration-count: infinite;
+  box-shadow: 1px 1px 1px 1px rgb(233, 233, 233);
+}
+
+.welcome .eye0 .right {
+  display: flex;
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 100%;
+  margin-left: 80rpx;
+  border-style: solid;
+  border-width: 40rpx;
+  animation-duration: 6s;
+  animation-iteration-count: infinite;
+  box-shadow: 1px 1px 1px 1px rgb(233, 233, 233);
+}
+
+@keyframes myeye0 {
+  0% {
+    border-left-width: 40rpx;
+    border-right-width: 40rpx;
+    border-bottom-width: 40rpx;
+    border-top-width: 40rpx;
+  }
+
+  40% {
+    border-left-width: 10rpx;
+    border-right-width: 70rpx;
+    border-bottom-width: 10rpx;
+    border-top-width: 70rpx;
+  }
+
+  60% {
+    border-left-width: 70rpx;
+    border-right-width: 10rpx;
+    border-bottom-width: 10rpx;
+    border-top-width: 70rpx;
+  }
+
+  100% {
+    border-left-width: 40rpx;
+    border-right-width: 40rpx;
+    border-bottom-width: 40rpx;
+    border-top-width: 40rpx;
+  }
+}
+
+/* 向上看 */
+.welcome .eye1 {
+  display: flex;
+  flex-direction: row;
+  margin-top: 100rpx;
+  height: 150rpx;
+}
+
+.welcome .eye1 .left {
+  display: flex;
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 100%;
+  border-style: solid;
+  border-width: 40rpx;
+  animation-duration: 6s;
+  animation-iteration-count: infinite;
+  box-shadow: 1px 1px 1px 1px rgb(233, 233, 233);
+}
+
+.welcome .eye1 .right {
+  display: flex;
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 100%;
+  margin-left: 80rpx;
+  border-style: solid;
+  border-width: 40rpx;
+  animation-duration: 6s;
+  animation-iteration-count: infinite;
+  box-shadow: 1px 1px 1px 1px rgb(233, 233, 233);
+}
+
+@keyframes myeye1 {
+  0% {
+    border-left-width: 40rpx;
+    border-right-width: 40rpx;
+    border-bottom-width: 40rpx;
+    border-top-width: 40rpx;
+  }
+
+  40% {
+    border-left-width: 10rpx;
+    border-right-width: 70rpx;
+    border-bottom-width: 70rpx;
+    border-top-width: 10rpx;
+  }
+
+  60% {
+    border-left-width: 70rpx;
+    border-right-width: 10rpx;
+    border-bottom-width: 70rpx;
+    border-top-width: 10rpx;
+  }
+
+  100% {
+    border-left-width: 40rpx;
+    border-right-width: 40rpx;
+    border-bottom-width: 40rpx;
+    border-top-width: 40rpx;
+  }
+}
+/* 眨眼 */
+.welcome .eye2 {
+  display: flex;
+  flex-direction: row;
+  margin-top: 100rpx;
+  height: 150rpx;
+}
+
+.welcome .eye2 .left {
+  display: flex;
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 100%;
+  border-style: solid;
+  border-width: 40rpx;
+  animation-duration: 4s;
+  animation-iteration-count: infinite;
+  box-shadow: 1px 1px 1px 1px rgb(233, 233, 233);
+}
+
+.welcome .eye2 .right {
+  display: flex;
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 100%;
+  margin-left: 80rpx;
+  border-style: solid;
+  border-width: 40rpx;
+  animation-duration: 4s;
+  animation-iteration-count: infinite;
+  box-shadow: 1px 1px 1px 1px rgb(233, 233, 233);
+}
+
+@keyframes myeye2 {
+  0% {
+    height: 100rpx;
+  }
+
+  40% {
+    height: 100rpx;
+  }
+
+  47% {
+    height: 0rpx;
+  }
+
+  50% {
+    height: 100rpx;
+  }
+
+  53% {
+    height: 0rpx;
+  }
+
+  60% {
+    height: 100rpx;
+  }
+
+  100% {
+    height: 100rpx;
+  }
+}
+
+/* 睿智 */
+.welcome .eye3 {
+  display: flex;
+  flex-direction: row;
+  margin-top: 100rpx;
+  height: 150rpx;
+}
+
+.welcome .eye3 .left {
+  display: flex;
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 100%;
+  border-style: solid;
+  border-width: 40rpx;
+  animation-duration: 5s;
+  animation-iteration-count: infinite;
+  box-shadow: 1px 1px 1px 1px rgb(233, 233, 233);
+}
+
+.welcome .eye3 .right {
+  display: flex;
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 100%;
+  margin-left: 80rpx;
+  border-style: solid;
+  border-width: 40rpx;
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
+  box-shadow: 1px 1px 1px 1px rgb(233, 233, 233);
+}
+
+@keyframes myeye3 {
+  0% {
+    border-left-width: 40rpx;
+    border-right-width: 40rpx;
+    border-bottom-width: 40rpx;
+    border-top-width: 40rpx;
+  }
+
+  10% {
+    border-left-width: 10rpx;
+    border-right-width: 70rpx;
+    border-bottom-width: 10rpx;
+    border-top-width: 70rpx;
+  }
+
+  30% {
+    border-left-width: 70rpx;
+    border-right-width: 10rpx;
+    border-bottom-width: 10rpx;
+    border-top-width: 70rpx;
+  }
+
+  50% {
+    border-left-width: 70rpx;
+    border-right-width: 10rpx;
+    border-bottom-width: 70rpx;
+    border-top-width: 10rpx;
+  }
+
+  70% {
+    border-left-width: 10rpx;
+    border-right-width: 70rpx;
+    border-bottom-width: 70rpx;
+    border-top-width: 10rpx;
+  }
+
+  100% {
+    border-left-width: 40rpx;
+    border-right-width: 40rpx;
+    border-bottom-width: 40rpx;
+    border-top-width: 40rpx;
+  }
+}
+
+/* 瞪着你 */
+.welcome .eye4 {
+  display: flex;
+  flex-direction: row;
+  margin-top: 100rpx;
+  height: 150rpx;
+}
+
+.welcome .eye4 .left {
+  display: flex;
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 100%;
+  border-style: solid;
+  border-width: 40rpx;
+  animation-duration: 4s;
+  animation-iteration-count: infinite;
+  box-shadow: 1px 1px 1px 1px rgb(233, 233, 233);
+}
+
+.welcome .eye4 .right {
+  display: flex;
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 100%;
+  margin-left: 80rpx;
+  border-style: solid;
+  border-width: 40rpx;
+  animation-duration: 4s;
+  animation-iteration-count: infinite;
+  box-shadow: 1px 1px 1px 1px rgb(233, 233, 233);
+}
+
+@keyframes myeye4 {
+  0% {
+    border-top-width: 40rpx;
+    border-bottom-width: 40rpx;
+  }
+
+  25% {
+    border-top-width: 40rpx;
+    border-bottom-width: 40rpx;
+  }
+
+  40% {
+    border-top-width: 60rpx;
+    border-bottom-width: 60rpx;
+  }
+
+  60% {
+    border-top-width: 60rpx;
+    border-bottom-width: 60rpx;
+  }
+
+  75% {
+    border-top-width: 40rpx;
+    border-bottom-width: 40rpx;
+  }
+
+  100% {
+    border-top-width: 40rpx;
+    border-bottom-width: 40rpx;
+  }
+}
+
+/* 无语 */
+.welcome .eye5 {
+  display: flex;
+  flex-direction: row;
+  margin-top: 100rpx;
+  height: 150rpx;
+}
+
+.welcome .eye5 .left {
+  display: flex;
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 100%;
+  border-style: solid;
+  border-width: 40rpx;
+  animation-duration: 4s;
+  animation-iteration-count: infinite;
+  box-shadow: 1px 1px 1px 1px rgb(233, 233, 233);
+}
+
+.welcome .eye5 .right {
+  display: flex;
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 100%;
+  margin-left: 80rpx;
+  border-style: solid;
+  border-width: 40rpx;
+  animation-duration: 4s;
+  animation-iteration-count: infinite;
+  box-shadow: 1px 1px 1px 1px rgb(233, 233, 233);
+}
+
+@keyframes myeye5 {
+  0% {
+    border-top-width: 40rpx;
+    border-bottom-width: 40rpx;
+    height: 100rpx;
+  }
+
+  25% {
+    border-top-width: 40rpx;
+    border-bottom-width: 40rpx;
+    height: 100rpx;
+  }
+
+  40% {
+    border-top-width: 60rpx;
+    border-bottom-width: 60rpx;
+    height: 50rpx;
+
+  }
+
+  60% {
+    border-top-width: 60rpx;
+    border-bottom-width: 60rpx;
+    height: 50rpx;
+  }
+
+  75% {
+    border-top-width: 40rpx;
+    border-bottom-width: 40rpx;
+    height: 100rpx;
+  }
+
+  100% {
+    border-top-width: 40rpx;
+    border-bottom-width: 40rpx;
+    height: 100rpx;
+  }
+}

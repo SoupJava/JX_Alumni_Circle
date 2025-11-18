@@ -1,0 +1,113 @@
+.fonttext{
+  text-overflow:ellipsis; 
+  word-wrap:break-word;
+}
+/* 问答求助 */
+
+.container1{
+    margin: 3%;
+    background-color: rgb(255, 255, 255);
+    padding: 3%; 
+    border-radius: 6px;
+    border: 2px solid rgb(184, 184, 184);
+    box-shadow: 1px 1px 1px rgba(185, 185, 185,0.5);
+}
+.container-id{
+    color: black;
+    font-weight: bolder;
+}
+.userid{
+    display: flex;
+    flex-direction:row;
+    align-items:center;
+}
+.sj{
+    font-size:small;
+    color: gray;
+}
+.detail{
+    color:gray;
+}
+
+/* 校园动态 */
+
+.moments{
+  margin: 3%;
+}
+.documents{
+  margin-left: 3rem;
+}
+.photo-view{
+  margin-bottom: 20rpx;
+  display: inline-block;
+}
+.photo{
+  background: rgb(185, 185, 185);  
+  float: left;
+  margin-right: 10rpx;
+  margin-top: 10rpx;
+}
+.dzpl{
+  display: flex;
+  flex-direction: row;
+}
+.discuss-view{
+  background: white;
+  width: 97%;
+}
+
+.discuss{
+  background: rgb(235, 235, 235);
+  line-height: 35rpx;
+}
+
+.discuss label{
+  font-size: 12px;
+}
+
+.discuss-user{
+  color: rgb(88, 103, 138);
+}
+
+/* 二手出售 */
+.goodlist{
+  float: left;
+  /* width: 50%; */
+  margin: 10px;
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow:1px 1px 1px 1px rgb(233, 233, 233);
+}
+.goodtext{
+  display: block;
+  background-color: #fff;
+  text-overflow:ellipsis; 
+  word-wrap:break-word;
+  padding: 5rpx;
+}
+
+.addnew{
+  top:75%;
+  right: 5%;
+  display: flex;
+  flex-direction: row;
+  position: fixed;
+  border-radius: 60rpx;
+  background-color: #00AC84;
+  align-items: center;
+  justify-content: center;
+  z-index: 3;
+  padding-top: 30rpx;
+  padding-bottom: 30rpx;
+  padding-left: 30rpx;
+  padding-right: 30rpx;
+  box-shadow: 1px 1px 1px 1px rgb(219, 217, 217);
+}
+.addnew .Name{
+  color: white;
+  font-weight: bold;
+  /* margin: 5rpx; */
+  /* margin-left: 10rpx; */
+}

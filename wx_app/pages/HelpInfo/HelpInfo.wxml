@@ -1,0 +1,95 @@
+<!--pages/HelpInfo/HelpInfo.wxml-->
+<van-notify id="van-notify" />
+<view class="page">
+  <view class="moments">
+    <view class="userid" bind:tap="LookUser" data-id="{{HelpDetail.openid}}">
+      <van-image round width="3rem" height="3rem" fit="cover" src="{{HelpDetail.userInfo.userImage}}" />
+      <view style="margin-left:5px;">
+        <view>
+          <text class="container-id">{{HelpDetail.userInfo.userName}}</text>
+        </view>
+        <view>
+          <block wx:if="{{HelpDetail.userInfo.userSex==0}}">
+            <text style="color:rgb(28, 28, 230)"> ♂ </text>
+          </block>
+          <block wx:else>
+            <text style="color:rgb(196, 53, 43)"> ♀ </text>
+          </block>
+          <text class="sj">{{HelpDetail.sendTime}}</text>
+        </view>
+      </view>
+    </view>
+    <view class="documents" data-id="{{HelpDetail._id}}">
+      <view class="fonttext">
+        <text style="font-weight: bolder;">问：</text>
+        <text>
+          {{HelpDetail.DiscussMessage}}
+        </text>
+      </view>
+      <!-- 图片 -->
+      <swiper class="photo-view" indicator-dots="{{true}}" autoplay="{{false}}" circular="{{true}}" vertical="{{false}}">
+        <block wx:for="{{HelpDetail.CommentImage}}" wx:for-item="item2" wx:key="idx">
+          <swiper-item>
+            <van-image bindtap='LookPhoto' data-ind="{{i}}" data-photUrl='{{item2}}' height="100%" width="100%" fit="fill" src='{{item2}}' />
+          </swiper-item>
+        </block>
+      </swiper>
+      <!-- 点赞评论操作 -->
+      <view class="dzpl">
+        <view>
+          <van-icon name="comment-o" />
+          <block>{{HelpDetail.ChatMessage.length}}</block>
+        </view>
+      </view>
+      <view wx:if="{{userInfo.openid==HelpDetail.openid}}">
+        <view class="correct">
+          <view class="dm">
+            <van-button type="danger" size="small" bind:tap="dm">删除</van-button>
+          </view>
+        </view>
+      </view>
+      <van-divider />
+      <view wx:for="{{HelpDetail.ChatMessage}}">
+        <view class="userid" bind:tap="LookUser" data-id="{{item.AnswerOpenId}}">
+          <van-image round width="3rem" height="3rem" fit="cover" src="{{item.AnswerImage}}" />
+          <view style="margin-left:5px;">
+            <view>
+              <text class="container-id">{{item.AnswerName}}</text>
+            </view>
+            <view>
+              <block wx:if="{{item.AnswerSex==0}}">
+                <text style="color:rgb(28, 28, 230)"> ♂ </text>
+              </block>
+              <block wx:else>
+                <text style="color:rgb(196, 53, 43)"> ♀ </text>
+              </block>
+              <text class="sj">{{item.SendTime}}</text>
+            </view>
+          </view>
+        </view>
+        <view class="documents">
+          <view class="fonttext">
+            <text style="font-weight: bolder;">回答：</text>
+            <text>
+              {{item.CommentMessage}}
+            </text>
+          </view>
+        </view>
+        <van-divider />
+      </view>
+    </view>
+  </view>
+  <view class="zwbar">
+  </view>
+  <view class="foot">
+    <van-cell-group>
+      <van-field model:value="{{ answer }}" center clearable left-icon="edit" placeholder="恶语伤人心~" border="{{ false }}" use-button-slot>
+        <van-button slot="button" size="small" type="primary" bind:tap="SendAnswer">
+          发送
+        </van-button>
+      </van-field>
+    </van-cell-group>
+  </view>
+</view>
+<van-toast id="van-toast" />
+<van-dialog id="van-dialog" />

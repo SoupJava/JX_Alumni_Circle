@@ -1,0 +1,61 @@
+<!--pages/InClassCollection/InClassCollection.wxml-->
+<van-notify id="van-notify" />
+<view class="AddPlan" bindtap="addmessage">
+  <van-icon name="plus" color="white" size="60rpx" />
+</view>
+<view class="top">
+  <view class="image">
+    <van-image width="100" height="100" src="cloud://cloud1-7g48m2a6e2ac093c.636c-cloud1-7g48m2a6e2ac093c-1320787210/icon/logo.png" />
+  </view>
+  <view class="message">
+    <view style="width: 100%;">
+      <van-cell icon="friends" label="班级人数：{{class.student.length}}人" size="large" title="{{class.classname}}" link-type="navigateTo" url="/pages/ClassMessage/ClassMessage">
+        <van-icon slot="right-icon" name="arrow" color="green" />
+      </van-cell>
+    </view>
+  </view>
+</view>
+<view>
+  <van-tabs class="menu-tabs" animated="true">
+    <van-tab title="未完成({{UnDoneCollection.length}})">
+      <view wx:for="{{UnDoneCollection}}" class="SecMessage">
+        <view class="Message" bind:tap="GoCollection" data-id="{{item._id}}">
+          <view class="Picture">
+            <van-image round width="100rpx" height="100rpx" src="cloud://cloud1-7g48m2a6e2ac093c.636c-cloud1-7g48m2a6e2ac093c-1320787210/icon/logo.png" />
+          </view>
+          <view class="MessageDesc">
+            <view class="Name">
+              {{item.TaskTitle}}
+            </view>
+          </view>
+          <view class="Other">
+            <view class="Time">
+              {{item.DeathlineDateShow}}
+            </view>
+          </view>
+        </view>
+      </view>
+      <view class="zwbar"></view>
+    </van-tab>
+    <van-tab title="已完成({{DoneCollection.length}})">
+      <view wx:for="{{DoneCollection}}" class="SecMessage">
+        <view class="Message" bind:tap="chatWith" data-id="{{item._id}}">
+          <view class="Picture">
+            <van-image round width="100rpx" height="100rpx" src="cloud://cloud1-7g48m2a6e2ac093c.636c-cloud1-7g48m2a6e2ac093c-1320787210/icon/classmessage.png" />
+          </view>
+          <view class="MessageDesc">
+            <view class="Name">
+              {{item.TaskTitle}}
+            </view>
+          </view>
+          <view class="Other">
+            <view class="Time">
+              {{item.DeathlineDateShow}}
+            </view>
+          </view>
+        </view>
+      </view>
+      <view class="zwbar"></view>
+    </van-tab>
+  </van-tabs>
+</view>

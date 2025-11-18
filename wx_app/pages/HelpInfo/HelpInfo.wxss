@@ -1,0 +1,84 @@
+/* pages/HelpInfo/HelpInfo.wxss */
+.page {
+  display: flex;
+  flex-direction: column;
+}
+
+.userid {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.sj {
+  font-size: small;
+  color: gray;
+}
+
+.detail {
+  color: gray;
+}
+
+.moments {
+  margin: 3%;
+}
+
+.documents {
+  margin: 3%;
+}
+
+.photo-view {
+  margin-top: 20rpx;
+  margin-bottom: 20rpx;
+}
+
+.photo {
+  background: rgb(255, 166, 0);
+  float: left;
+  margin-right: 10rpx;
+  margin-top: 10rpx;
+}
+
+.dzpl {
+  display: flex;
+  flex-direction: row;
+  margin-top: 10rpx;
+  margin-bottom: 20rpx;
+}
+
+.discuss-view {
+  background: white;
+  width: 97%;
+}
+.correct{
+  display: flex;
+  flex-direction: row;
+}
+.correct .dm{
+  display: flex;
+  flex-direction: row-reverse;
+  flex-grow: 1;
+}
+
+.discuss {
+  background: rgb(235, 235, 235);
+  line-height: 35rpx;
+}
+
+.discuss label {
+  font-size: 12px;
+}
+
+.discuss-user {
+  color: rgb(88, 103, 138);
+}
+
+.foot {
+  width: 686rpx;
+  padding: 17rpx 32rpx;
+  background-color: #FFFFFF;
+  box-shadow: 0rpx -1rpx 4rpx 0rpx rgba(0, 0, 0, 0.08);
+  position: fixed;
+  bottom: 0;
+  left: 0;
+}

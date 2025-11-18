@@ -1,0 +1,108 @@
+<!--pages/CommentInfo/CommentInfo.wxml-->
+<van-notify id="van-notify" />
+<view class="page">
+  <view class="moments">
+    <view class="userid" bind:tap="LookUser" data-id="{{CommentDetail.openid}}">
+      <van-image round width="3rem" height="3rem" fit="cover" src="{{CommentDetail.userInfo.userImage}}" />
+      <view style="margin-left:5px;">
+        <view>
+          <text class="container-id">{{CommentDetail.userInfo.userName}}</text>
+        </view>
+        <view>
+          <block wx:if="{{CommentDetail.userInfo.userSex==0}}">
+            <text style="color:rgb(28, 28, 230)"> ♂ </text>
+          </block>
+          <block wx:else>
+            <text style="color:rgb(196, 53, 43)"> ♀ </text>
+          </block>
+          <text class="sj">{{CommentDetail.sendTime}}</text>
+        </view>
+      </view>
+    </view>
+    <view class="documents" data-id="{{CommentDetail._id}}">
+      <view class="fonttext" bind:tap="ChangeOwner">
+        <text>
+          {{CommentDetail.CommentMessage}}
+        </text>
+      </view>
+      <swiper class="photo-view" indicator-dots="{{true}}" autoplay="{{false}}" circular="{{true}}" vertical="{{false}}">
+        <block wx:for="{{CommentDetail.CommentImage}}" wx:for-item="item2" wx:key="idx">
+          <swiper-item>
+            <!-- <view class="swiper-item {{item}}"></view> -->
+            <van-image bindtap='LookPhoto' data-ind="{{i}}" data-photUrl='{{item2}}' height="100%" width="100%" fit="fill" src='{{item2}}' />
+          </swiper-item>
+        </block>
+      </swiper>
+      <!-- 点赞评论操作 -->
+      <view class="dzpl">
+        <view bind:tap="ChangeLike">
+          <van-icon name="{{LoveIndex==-1?'like-o':'like'}}" color="{{LoveIndex==-1?'':'red'}}"/>
+          <block>{{CommentDetail.LoveID.length}}</block>
+        </view>
+        <view style="margin-left:30rpx;" bind:tap="ChangeOwner">
+          <van-icon name="comment-o" />
+          <block>{{CommentDetail.ChatMessage.length}}</block>
+        </view>
+      </view>
+      <view wx:if="{{userInfo.openid==CommentDetail.openid}}">
+        <view class="correct">
+          <view class="dm">
+            <van-button type="danger" size="small" bind:tap="dm">删除</van-button>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view wx:for="{{CommentDetail.ChatMessage}}" wx:for-index="ind">
+      <van-divider />
+      <view class="discuss">
+        <view class="userid" bind:tap="LookUser" data-id="{{item.ChatUserInfo.userOpenId}}">
+          <van-image round width="3rem" height="3rem" fit="cover" src="{{item.ChatUserInfo.userImage}}" />
+          <view style="margin-left:5px;">
+            <view>
+              <text class="container-id">{{item.ChatUserInfo.userName}}</text>
+            </view>
+            <view>
+              <text class="sj">{{item.SendTime}}</text>
+            </view>
+          </view>
+        </view>
+        <view class="message" bind:tap="ChangeChater" data-i="{{ind}}" data-u="{{item.ChatUserInfo}}">
+          {{item.Message}}
+        </view>
+        <view wx:for="{{item.ChildComment}}" wx:for-item="item2">
+          <view class="childChat">
+            <view class="userid" bind:tap="LookUser" data-id="{{item2.sendUserInfo.userOpenId}}">
+              <van-image round width="2rem" height="2rem" fit="cover" src="{{item2.sendUserInfo.userImage}}" />
+              <view style="margin-left:5px;">
+                <view>
+                  <text class="container-id">{{item2.sendUserInfo.userName}}</text>
+                </view>
+                <view>
+                  <text class="sj">{{item2.SendTime}}</text>
+                </view>
+              </view>
+            </view>
+            <view class="message">
+              <text>回复 </text>
+              <text bind:tap="LookUser" data-id="{{item2.receiveUserInfo.userOpenId}}" style="font-weight: bold;">{{item2.receiveUserInfo.userName}}： </text>
+              <text data-i="{{ind}}" data-u="{{item2.sendUserInfo}}" bind:tap="ChangeChater">{{item2.Message}}</text>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="zwbar">
+  </view>
+  <view class="foot">
+    <van-cell-group>
+      <van-field model:value="{{ answer }}" center clearable left-icon="edit" placeholder="{{active?'回复'+actuser.userName+':':'恶语伤人心~'}}" border="{{ false }}" use-button-slot>
+        <van-button slot="button" size="small" type="primary" bind:tap="sendComment">
+          发送
+        </van-button>
+      </van-field>
+    </van-cell-group>
+  </view>
+</view>
+<van-toast id="van-toast" />
+<van-dialog id="van-dialog" />

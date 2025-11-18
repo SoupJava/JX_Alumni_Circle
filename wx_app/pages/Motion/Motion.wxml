@@ -1,0 +1,154 @@
+<!--pages/Motion/Motion.wxml-->
+<view class="topdes">
+  <view style="position: relative; width: 100%; display: flex;margin-top: 50px;margin-bottom: 40px;">
+    <view style="margin-left: 8px;display: flex;flex-grow: 1;justify-content: start;">性别:{{MotionMessage.sex}}</view>
+    <view style="margin-right: 8px; display: flex;flex-grow: 1;justify-content: flex-end;">年龄:{{MotionMessage.age}}岁</view>
+  </view>
+  <view style="width: 100%; display: flex;margin-bottom: 40px;">
+    <view style=" margin-left: 8px;display: flex;flex-grow: 1;justify-content: start;">身高:{{MotionMessage.height}}cm</view>
+    <view style="margin-right: 8px; display: flex;flex-grow: 1;justify-content: flex-end;">体重:{{MotionMessage.weight}}kg</view>
+  </view>
+  <view style="width: 100%; display: flex;margin-bottom: 40px;">
+    <view style=" margin-left: 8px;display: flex;flex-grow: 1;justify-content: start;">BMI:{{BMI}}</view>
+    <view style=" margin-right: 8px;display: flex;flex-grow: 1;justify-content: flex-end;">运动时长:{{allhour}}h</view>
+  </view>
+  <view style="width: 100%; display: flex;">
+    <view style=" margin-left: 8px;display: flex;flex-grow: 1;justify-content: start;">
+      <van-button plain hairline round type="primary" icon="cloud://cloud1-7g48m2a6e2ac093c.636c-cloud1-7g48m2a6e2ac093c-1320787210/icon/个人信息.png" bind:tap="MyShopMessage">个人信息</van-button>
+    </view>
+    <view style=" margin-right: 8px;display: flex;flex-grow: 1;justify-content: flex-end;">
+      <van-button plain hairline round type="primary" icon="cloud://cloud1-7g48m2a6e2ac093c.636c-cloud1-7g48m2a6e2ac093c-1320787210/icon/运动信息.png" bind:tap="MyOrder">运动信息</van-button>
+    </view>
+  </view>
+</view>
+<view class="top">
+  <van-icon name="cloud://cloud1-7g48m2a6e2ac093c.636c-cloud1-7g48m2a6e2ac093c-1320787210/icon/user.png" size="350px" />
+</view>
+<view class="ChoiceMotion">
+  <view class="colum" style="margin-top: 40rpx;">
+    <view class="cell" bind:tap="GoMotion" data-name="跑步" data-img="cloud://cloud1-7g48m2a6e2ac093c.636c-cloud1-7g48m2a6e2ac093c-1320787210/icon/跑步.png">
+      <view class="box">
+        <van-icon name="cloud://cloud1-7g48m2a6e2ac093c.636c-cloud1-7g48m2a6e2ac093c-1320787210/icon/跑步.png" size="100px" />
+        跑步
+      </view>
+    </view>
+    <view class="cell" bind:tap="GoMotion" data-img="cloud://cloud1-7g48m2a6e2ac093c.636c-cloud1-7g48m2a6e2ac093c-1320787210/icon/骑行.png" data-name="骑行">
+      <view class="box">
+        <van-icon name="cloud://cloud1-7g48m2a6e2ac093c.636c-cloud1-7g48m2a6e2ac093c-1320787210/icon/骑行.png" size="100px" />
+        骑行
+      </view>
+    </view>
+  </view>
+  <view class="colum">
+    <view class="cell"  bind:tap="GoMotion" data-img="cloud://cloud1-7g48m2a6e2ac093c.636c-cloud1-7g48m2a6e2ac093c-1320787210/icon/跳绳.png" data-name="跳绳">
+      <view class="box">
+        <van-icon name="cloud://cloud1-7g48m2a6e2ac093c.636c-cloud1-7g48m2a6e2ac093c-1320787210/icon/跳绳.png" size="100px" />
+        跳绳
+      </view>
+    </view>
+    <view class="cell" bind:tap="GoMotion"  data-img="cloud://cloud1-7g48m2a6e2ac093c.636c-cloud1-7g48m2a6e2ac093c-1320787210/icon/瑜伽.png" data-name="瑜伽">
+      <view class="box">
+        <van-icon name="cloud://cloud1-7g48m2a6e2ac093c.636c-cloud1-7g48m2a6e2ac093c-1320787210/icon/瑜伽.png" size="100px" />
+        瑜伽
+      </view>
+    </view>
+  </view>
+  <view class="colum">
+    <view class="cell" bind:tap="GoMotion"  data-img="cloud://cloud1-7g48m2a6e2ac093c.636c-cloud1-7g48m2a6e2ac093c-1320787210/icon/健腹.png" data-name="仰卧起坐">
+      <view class="box">
+        <van-icon name="cloud://cloud1-7g48m2a6e2ac093c.636c-cloud1-7g48m2a6e2ac093c-1320787210/icon/健腹.png" size="100px" />
+        仰卧起坐
+      </view>
+    </view>
+    <view class="cell" bind:tap="GoMotion"  data-img="cloud://cloud1-7g48m2a6e2ac093c.636c-cloud1-7g48m2a6e2ac093c-1320787210/icon/俯卧撑.png" data-name="俯卧撑">
+      <view class="box">
+        <van-icon name="cloud://cloud1-7g48m2a6e2ac093c.636c-cloud1-7g48m2a6e2ac093c-1320787210/icon/俯卧撑.png" size="100px" />
+        俯卧撑
+      </view>
+    </view>
+  </view>
+  <view class="colum">
+    <view class="cell" bind:tap="GoMotion"  data-img="cloud://cloud1-7g48m2a6e2ac093c.636c-cloud1-7g48m2a6e2ac093c-1320787210/icon/拳击.png" data-name="拳击">
+      <view class="box">
+        <van-icon name="cloud://cloud1-7g48m2a6e2ac093c.636c-cloud1-7g48m2a6e2ac093c-1320787210/icon/拳击.png" size="100px" />
+        拳击
+      </view>
+    </view>
+    <view class="cell" bind:tap="GoMotion"  data-img="cloud://cloud1-7g48m2a6e2ac093c.636c-cloud1-7g48m2a6e2ac093c-1320787210/icon/Triangle.png" data-name="健美操">
+      <view class="box">
+        <van-icon name="cloud://cloud1-7g48m2a6e2ac093c.636c-cloud1-7g48m2a6e2ac093c-1320787210/icon/Triangle.png" size="100px" />
+        健美操
+      </view>
+    </view>
+  </view>
+  <view class="colum">
+    <view class="cell" bind:tap="GoMotion"  data-img="cloud://cloud1-7g48m2a6e2ac093c.636c-cloud1-7g48m2a6e2ac093c-1320787210/icon/线性乒乓球.png" data-name="乒乓球">
+      <view class="box">
+        <van-icon name="cloud://cloud1-7g48m2a6e2ac093c.636c-cloud1-7g48m2a6e2ac093c-1320787210/icon/线性乒乓球.png" size="100px" />
+        乒乓球
+      </view>
+    </view>
+    <view class="cell"  bind:tap="GoMotion" data-img="cloud://cloud1-7g48m2a6e2ac093c.636c-cloud1-7g48m2a6e2ac093c-1320787210/icon/线性网球.png" data-name="网球">
+      <view class="box">
+        <van-icon name="cloud://cloud1-7g48m2a6e2ac093c.636c-cloud1-7g48m2a6e2ac093c-1320787210/icon/线性网球.png" size="100px" />
+        羽毛球
+      </view>
+    </view>
+  </view>
+  <view class="colum">
+    <view class="cell"  bind:tap="GoMotion" data-img="cloud://cloud1-7g48m2a6e2ac093c.636c-cloud1-7g48m2a6e2ac093c-1320787210/icon/线性排球.png" data-name="排球">
+      <view class="box">
+        <van-icon name="cloud://cloud1-7g48m2a6e2ac093c.636c-cloud1-7g48m2a6e2ac093c-1320787210/icon/线性排球.png" size="100px" />
+        排球
+      </view>
+    </view>
+    <view class="cell" bind:tap="GoMotion"  data-img="cloud://cloud1-7g48m2a6e2ac093c.636c-cloud1-7g48m2a6e2ac093c-1320787210/icon/线性足球.png" data-name="足球">
+      <view class="box">
+        <van-icon name="cloud://cloud1-7g48m2a6e2ac093c.636c-cloud1-7g48m2a6e2ac093c-1320787210/icon/线性足球.png" size="100px" />
+        足球
+      </view>
+    </view>
+  </view>
+  <view class="colum">
+    <view class="cell" bind:tap="GoMotion"  data-img="cloud://cloud1-7g48m2a6e2ac093c.636c-cloud1-7g48m2a6e2ac093c-1320787210/icon/线性篮球.png" data-name="篮球">
+      <view class="box">
+        <van-icon name="cloud://cloud1-7g48m2a6e2ac093c.636c-cloud1-7g48m2a6e2ac093c-1320787210/icon/线性篮球.png" size="100px" />
+        篮球
+      </view>
+    </view>
+    <view class="cell" bind:tap="GoMotion"  data-img="cloud://cloud1-7g48m2a6e2ac093c.636c-cloud1-7g48m2a6e2ac093c-1320787210/icon/线性游泳.png" data-name="游泳">
+      <view class="box">
+        <van-icon name="cloud://cloud1-7g48m2a6e2ac093c.636c-cloud1-7g48m2a6e2ac093c-1320787210/icon/线性游泳.png" size="100px" />
+        游泳
+      </view>
+    </view>
+  </view>
+</view>
+<view class="zwbar" style="background-color: white;"></view>
+<van-tabbar active="{{ active }}" active-color="#07c160" inactive-color="#000" bind:change="onChange">
+  <van-tabbar-item url="/pages/index/index" name="home">
+    <image slot="icon" src="cloud://cloud1-7g48m2a6e2ac093c.636c-cloud1-7g48m2a6e2ac093c-1320787210/icon/广场-copy.png" mode="aspectFit" style="width: 30px; height: 18px;" />
+    <image slot="icon-active" src="cloud://cloud1-7g48m2a6e2ac093c.636c-cloud1-7g48m2a6e2ac093c-1320787210/icon/广场选中.png" mode="aspectFit" style="width: 45px; height: 27px;" />
+    广场
+  </van-tabbar-item>
+  <van-tabbar-item url="/pages/service/service" name="service">
+    <image slot="icon" src="cloud://cloud1-7g48m2a6e2ac093c.636c-cloud1-7g48m2a6e2ac093c-1320787210/icon/模版广场.png" mode="aspectFit" style="width: 30px; height: 18px;" />
+    <image slot="icon-active" src="cloud://cloud1-7g48m2a6e2ac093c.636c-cloud1-7g48m2a6e2ac093c-1320787210/icon/服务.png" mode="aspectFit" style="width: 45px; height: 27px;" />
+    服务
+  </van-tabbar-item>
+  <van-tabbar-item url="/pages/tree/tree" name="tree">
+    <image slot="icon" src="cloud://cloud1-7g48m2a6e2ac093c.636c-cloud1-7g48m2a6e2ac093c-1320787210/image.png" mode="aspectFit" style="width: 45px; height: 45px;" />
+  </van-tabbar-item>
+  <van-tabbar-item url="/pages/Motion/Motion" name="money">
+    <image slot="icon" src="cloud://cloud1-7g48m2a6e2ac093c.636c-cloud1-7g48m2a6e2ac093c-1320787210/icon/篮球.png" mode="aspectFit" style="width: 30px; height: 18px;" />
+    <image slot="icon-active" src="cloud://cloud1-7g48m2a6e2ac093c.636c-cloud1-7g48m2a6e2ac093c-1320787210/icon/心里健康.png" mode="aspectFit" style="width: 45px; height: 27px;" />
+    运动
+  </van-tabbar-item>
+  <van-tabbar-item url="/pages/mySet/mySet" name="user">
+    <image slot="icon" src="cloud://cloud1-7g48m2a6e2ac093c.636c-cloud1-7g48m2a6e2ac093c-1320787210/icon/我的.png" mode="aspectFit" style="width: 30px; height: 18px;" />
+    <image slot="icon-active" src="cloud://cloud1-7g48m2a6e2ac093c.636c-cloud1-7g48m2a6e2ac093c-1320787210/icon/我的-copy.png" mode="aspectFit" style="width: 45px; height: 27px;" />
+    我的
+  </van-tabbar-item>
+</van-tabbar>
+<van-dialog id="van-dialog" />
+<van-notify id="van-notify" />

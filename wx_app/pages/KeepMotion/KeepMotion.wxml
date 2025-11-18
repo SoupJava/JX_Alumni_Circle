@@ -1,0 +1,33 @@
+<!--pages/KeepMotion/KeepMotion.wxml-->
+<van-notify id="van-notify" />
+<view class="cell" bind:tap="GoMotion" data-name="跑步" data-img="cloud://cloud1-7g48m2a6e2ac093c.636c-cloud1-7g48m2a6e2ac093c-1320787210/icon/跑步.png">
+  <view class="box">
+    <van-icon name="{{img}}" size="100px" />
+    {{name}}
+  </view>
+</view>
+<view class="circle">
+  <view class="showtime">
+    <van-count-down class="control-count-down" use-slot bind:change="onChange" bind:finish="finished" time="{{ time }}" format="HH:mm:ss" millisecond>
+      <block wx:if="{{ timeData.hours!=0}}">
+        <text class="item">{{ h }}:</text>
+      </block>
+      <block wx:if="{{ timeData.minutes!=0}}">
+        <text class="item">{{ m}}:</text>
+      </block>
+      <text class="item">{{ s }}</text>
+    </van-count-down>
+  </view>
+</view>
+<view style="display:flex;justify-content:center;width:100%;margin-top: 100rpx;">
+  <view style="display: flex;flex-direction: column;justify-content: center;">
+    <block wx:if="{{continue}}">
+      <van-button round custom-class="bbutton" icon="play-circle-o" type="warning" bindclick="start">继 续</van-button>
+    </block>
+    <block wx:else>
+      <van-button round custom-class="bbutton" icon="pause-circle-o" type="primary" bindclick="pause">暂 停</van-button>
+    </block>
+    <van-button round custom-class="bbutton" icon="stop-circle-o" type="primary" bindclick="end">结 束</van-button>
+  </view>
+</view>
+<van-notify id="van-notify" />

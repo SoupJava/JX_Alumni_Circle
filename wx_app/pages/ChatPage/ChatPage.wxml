@@ -1,0 +1,56 @@
+<!--pages/ChatPage/ChatPage.wxml-->
+<view class="page" style="background-color: {{userinfo.theme.color}};">
+  <view class="regist">
+    <view class="welcome">
+      <view class='eye{{userinfo.theme.emoji}}'>
+        <view class="left" style="background-color: {{userinfo.theme.color}};animation-name: myeye{{userinfo.theme.emoji}};">
+          <view class="leftl"></view>
+        </view>
+        <view class="right" style="background-color: {{userinfo.theme.color}};animation-name: myeye{{userinfo.theme.emoji}};">
+          <view class="rightl"></view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <van-toast id="van-toast" />
+</view>
+<view class="chat">
+  <scroll-view scroll-y="true" scroll-into-view="{{toview}}" class="chatmessage" style="height:{{height}}px">
+    <view class="scroll-view-content">
+      <view wx:for="{{chatMessage}}" wx:for-index="i">
+        <block wx:if="{{item.openid2!=userinfo2.openid}}">
+          <view class="AIChat" id="item{{i}}">
+            <view class="userid" bind:tap="LookUser" data-id="{{item.openid1}}">
+              <van-image round width="3rem" height="3rem" fit="cover" src="{{userinfo2.userimage}}" />
+            </view>
+            <text selectable class="messagebg">
+              {{item.message}}
+            </text>
+          </view>
+        </block>
+        <block wx:else>
+          <view class="MyChat" id="item{{i}}">
+            <view class="userid" bind:tap="LookUser" data-id="{{item.openid1}}">
+              <van-image round width="3rem" height="3rem" fit="cover" src="{{userinfo.userimage}}" />
+              <text selectable class="messagebg">
+                {{item.message}}
+              </text>
+            </view>
+          </view>
+        </block>
+      </view>
+    </view>
+  </scroll-view>
+  <view class="zwbar" style="background-color: {{userinfo.theme.color}};">
+  </view>
+  <view class="foot">
+    <van-cell-group>
+      <van-field model:value="{{ content }}" center clearable left-icon="edit" border="{{ false }}" use-button-slot>
+        <van-button slot="button" size="small" type="primary" bind:tap="sendComment">
+          发送
+        </van-button>
+      </van-field>
+    </van-cell-group>
+  </view>
+</view>
+<van-notify id="van-notify" />

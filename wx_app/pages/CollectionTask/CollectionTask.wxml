@@ -1,0 +1,69 @@
+<!--pages/CollectionTask/CollectionTask.wxml-->
+<view class="AddPlan" bindtap="addmessage">
+  <van-button round type="primary" size="large" bind:tap="sendComment">立 即 提 交 </van-button>
+</view>
+<view class="top">
+  <view class="title">
+    {{ThisCollection.TaskTitle}}
+  </view>
+  <scroll-view class="content" scroll-y>
+    <text class="text">
+      {{ThisCollection.TaskMain}}
+    </text>
+  </scroll-view>
+  <view class="time">
+    截止时间：{{ThisCollection.DeathlineDateShow}}
+  </view>
+  <van-divider />
+  <view class="setting">
+    <view style="margin-right:5rpx;">
+      <van-icon name="delete-o" size="50rpx" />
+    </view>
+    <view style="margin-right:20rpx;">
+      <van-icon name="edit" size="50rpx" />
+    </view>
+    <view style="margin-right:20rpx;" bind:tap="down">
+      <van-icon name="down" size="50rpx" />
+    </view>
+  </view>
+</view>
+<view>
+  <van-tabs class="menu-tabs" animated="true">
+    <van-tab title="已提交({{DoneCollection.length}})">
+      <view wx:for="{{DoneCollection}}" class="SecMessage">
+        <view class="Message" bind:tap="LookUser" data-id="{{item.openid}}">
+          <view class="Picture">
+            <van-image round width="100rpx" height="100rpx" src="cloud://cloud1-7g48m2a6e2ac093c.636c-cloud1-7g48m2a6e2ac093c-1320787210/userImage/{{item.openid}}.png" />
+          </view>
+          <view class="MessageDesc">
+            <view class="Name">
+              {{item.name}}
+            </view>
+          </view>
+          <view class="Other">
+            <view class="Time">
+              {{item.SubmitTimeShow}}
+            </view>
+          </view>
+        </view>
+      </view>
+      <view class="zwbar"></view>
+    </van-tab>
+    <van-tab title="未提交({{UnDoneCollection.length}})">
+      <view wx:for="{{UnDoneCollection}}" class="SecMessage">
+        <view class="Message" bind:tap="LookUser" data-id="{{item.openid}}">
+          <view class="Picture">
+            <van-image round width="100rpx" height="100rpx" src="cloud://cloud1-7g48m2a6e2ac093c.636c-cloud1-7g48m2a6e2ac093c-1320787210/userImage/{{item.openid}}.png" />
+          </view>
+          <view class="MessageDesc">
+            <view class="Name">
+              {{item.name}}
+            </view>
+          </view>
+        </view>
+      </view>
+    </van-tab>
+    <view class="zwbar"></view>
+  </van-tabs>
+</view>
+<van-notify id="van-notify" />
