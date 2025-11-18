@@ -1,5 +1,10 @@
 # 交新校友圈
 （需要数据库结构的请私聊我）
+
+https://www.bilibili.com/video/BV1WJ4m1P7d7/
+
+项目视频链接
+
 # 1 开发背景
 
 随着信息技术的迅猛进步和社交媒体的普及，人们对社交网络的需求日益旺盛，尤其在
@@ -95,20 +100,25 @@
 跟其他智能聊天不同的是，该智能聊天通过消息队列来进行顺序式异步调用大模型接口
 （文心一言），从而实现一问一答形式，减少回答等待时间。
 
-# 5开发思路
+# 5 开发思路
 <img width="833" height="1039" alt="image" src="https://github.com/user-attachments/assets/75475785-c49e-4438-a30a-7691d0f11bcf" />
+
 交新校友圈开发框架思维导图
 
 <img width="1916" height="767" alt="image" src="https://github.com/user-attachments/assets/3f05d8e8-116e-46b9-851c-ed67642304f5" />
+
 交新校友圈页面开发思维导图
 
 <img width="836" height="435" alt="image" src="https://github.com/user-attachments/assets/8c90f354-d615-4db6-9980-778fca621c33" />
+
 层次结构图
 
 <img width="824" height="299" alt="image" src="https://github.com/user-attachments/assets/f922f980-dc0f-4b86-af11-d8500299fbe9" />
+
 微信公众号模块
 
 <img width="829" height="466" alt="image" src="https://github.com/user-attachments/assets/e6636193-c81a-4686-8611-24759e4b8ec7" />
+
 微信小程序模块
 
 
