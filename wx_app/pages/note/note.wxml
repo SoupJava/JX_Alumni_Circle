@@ -1,0 +1,47 @@
+<!--pages/note/note.wxml-->
+<van-notify id="van-notify" />
+<view class="AddPlan" bindtap="addmessage">
+  <van-icon name="plus" color="white" size="60rpx" />
+</view>
+<view>
+  <view class="planContainer">
+    <view class="UnDonePlan" wx:for="{{Note}}" wx:key="index">
+        <view class="UnDoneLabel" bind:tap="changeplan" data-it="{{item}}" bind:tap="GoKeep">
+          <view class="l1">
+            {{item.noteTitle}}
+          </view>
+          <view class="l2">
+            {{item.noteTime}}
+          </view>
+        </view>
+        <view class="planclose" bind:tap="deleteplan" data-it="{{item}}">
+          <view>
+            <van-icon name="cross" />
+          </view>
+        </view>
+    </view>
+  </view>
+</view>
+<view>
+  <van-overlay show="{{ showaddnote }}" z-index="4">
+    <view class="wrapper">
+      <view class="block">
+        <view class="close" bindtap="closeSelClass">
+          <van-icon name="cross" />
+        </view>
+        <view class="inputplan">
+          <view style="display: flex;flex-direction: column;margin-right: 10rpx;">
+            <van-icon name="circle" />
+          </view>
+          <textarea class="areatext" value="{{addnote.noteTitle}}" maxlength="60" auto-heigh="true" placeholder-style="color:gray;" placeholder="请输入随笔标题" bindinput="inputChange"></textarea>
+        </view>
+        <view class="doit">
+          <view class="done" style="color: {{addnote.noteTitle==''?'#ECECEC':'black'}};" bind:tap="addok">
+            完成
+          </view>
+        </view>
+      </view>
+    </view>
+  </van-overlay>
+</view>
+<van-dialog id="van-dialog" />

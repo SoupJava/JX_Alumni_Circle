@@ -1,0 +1,387 @@
+/* pages/study/study.wxss */
+
+.date{
+  display: flex;
+  height: 90rpx;
+  padding: 6rpx 0;
+  color: #3f3f3f;
+  line-height: 1.4;
+}
+
+.date .month{
+  width: 7%;
+  font-size: 24rpx;
+  display: inline-block;
+  color:#3f3f3f;
+  text-align: center;
+  height: 100%;
+  padding: 8rpx 0;
+}
+.date .day{
+  width: calc(100% - 8%);
+  margin-left: 8% ;
+}
+.date .day .changeweek{
+  display: flex;
+  flex-direction: row;
+  margin-left: -6%;
+  flex-grow: 1;
+}
+.date .day .week{
+  width: calc(100% / 7);
+  display: inline-block;
+  height: 100%;
+  text-align: center;
+}
+.date .day .week-item{
+  font-size: 24rpx;
+  font-weight: 700;
+  line-height: 1.8;
+}
+.date .day .day-item{
+  font-size: 22rpx;
+  color: #333;
+}
+
+.date .day .todayDate{
+  background: #1380ff;
+  border-radius: 8rpx;
+  color: #fff;
+}
+
+.date .day .todayDate .day-item{
+  color: #fff;
+}
+
+.courseScroll{
+  width: 100%;
+  height: 75%;
+  z-index: 2;
+  position: fixed;
+}
+
+.courseScroll .courseContent{
+  height: 1580rpx;
+  width: 100%;
+  display: flex;
+}
+
+.courseScroll .courseContent .courseTime{
+  width: 7%;
+  font-size: 24rpx;
+  display: inline-block;
+  color:#3f3f3f;
+  text-align: center;
+}
+
+.courseScroll .courseContent .courseTime .left {
+  width: 100%;
+  height: 110rpx;
+  justify-content: center;
+  display: flex;
+  position: relative;
+  align-items: center;
+  z-index: 0;
+  flex-direction: column;
+}
+
+.courseScroll .courseContent .courseTime .left .course-time{
+  height: 110rpx;
+  width: 100%;
+  position: absolute;
+  text-align: center;
+  top: 0;
+  right: 0;
+}
+
+.courseScroll .courseContent .courseTime .left .course-time .time-start,
+.courseScroll .courseContent .courseTime .left .course-time .time-end{
+  color: #8799a3;
+  font-size: 20rpx;
+  position: absolute;
+  width: 100%;
+  left: 0;
+}
+
+.courseScroll .courseContent .courseTime .left .course-time .time-start{
+  top: 12rpx;
+}
+
+.courseScroll .courseContent .courseTime .left .course-time .time-end{
+  bottom: 12rpx;
+}
+
+.courseScroll .courseContent .courseTime .left .number{
+  font-size: 24rpx;
+  line-height: 110rpx;
+}
+
+.course{
+  width: 92%;
+  margin: 0 auto;
+}
+
+.course .kcb-item {
+  width: calc(92% / 7);
+  position: absolute;
+  justify-content: center;
+  display: flex;
+}
+
+.course .kcb-item .smalltext {
+  height: 100%;
+  width: 100%;
+  margin: 0 4rpx;
+  font-size: 24rpx;
+  line-height: 36rpx;
+  text-align: center;
+  color: #fff;
+  border-radius: 8rpx;
+  padding: 2rpx 4rpx;
+  display: flex;
+  flex-direction: column;
+}
+
+.course .kcb-item .smalltext .smalltextName{
+  flex: 1 0 auto;
+}
+
+.course .kcb-item .smalltext .smalltextAddress{
+  /* border-top:none; */
+  border-top: 1px solid #fff;
+  flex: 0 0 auto;
+}
+
+
+/* 我的计划 */
+.planContainer{
+  width: 100%;
+  height: 1250rpx;
+}
+.planclose{
+  display: flex;
+  flex-grow: 1;
+  flex-direction: row-reverse;
+}
+.planContainer .UnDonePlan{
+  background-color: #fff;
+  height: 100rpx;
+  display: flex;
+  flex-direction: row;
+  margin: 40rpx;
+  padding: 30rpx;
+  border-radius: 30rpx;
+  align-items: center;
+}
+.planContainer .UnDonePlan .UnDoneLabel{
+  display: flex;
+  flex-direction: column;
+}
+.planContainer .UnDonePlan .UnDoneLabel .l1{
+  font-weight: bold;
+  /* font-size: large; */
+}
+.planContainer .UnDonePlan .UnDoneLabel .l2{
+  font-size: small;
+  display: flex;
+  flex-direction: row;
+}
+.planContainer .DonePlan{
+  background-color: #fff;
+  height: 100rpx;
+  display: flex;
+  margin: 40rpx;
+  padding: 30rpx;
+  border-radius: 30rpx;
+  align-items: center;
+}
+.planContainer .DonePlan .UnDoneLabel{
+  display: flex;
+  flex-direction: column;
+  color: gray;
+}
+.planContainer .DonePlan .UnDoneLabel .l1{
+  font-weight: unset;
+}
+.planContainer .DonePlan .UnDoneLabel .l2{
+  font-size: small;
+  display: flex;
+  flex-direction: row;
+}
+.AddPlan{
+  top:75%;
+  left: 80%;
+  display: flex;
+  position: fixed;
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 100%;
+  background-color: rgb(255, 166, 0);
+  align-items: center;
+  justify-content: center;
+  z-index: 3;
+}
+
+/* 遮罩层 */
+.wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.wrapper .block {
+  width: 80%;
+  background-color: #fff;
+  border-radius: 25rpx;
+  padding: 10rpx;
+  justify-content: center;
+}
+.wrapper .block .close{
+  display: flex;
+  flex-direction: row-reverse;
+}
+.wrapper .block .classdetail{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: large;
+}
+.wrapper .block .classdetail view{
+  margin: 5rpx;
+}
+.wrapper .block .button{
+  display: flex;
+  padding: 10rpx;
+  flex-direction: row;
+}
+.wrapper .block .button view{
+  flex-grow: 1;
+}
+.wrapper .block .button .okbutton{
+  display: flex;
+  flex-direction: row-reverse;
+}
+.wrapper .block .addclass{
+  display: flex;
+  flex-direction: column;
+  padding: 5rpx;
+}
+.wrapper .block .addclass .time{
+  /* justify-content: center; */
+  align-items: center;
+  padding: 30rpx;
+}
+.wrapper .block .addclass .time .label{
+  flex-grow: 1;
+  font-size: 30rpx;
+  font-weight: bold;
+}
+.wrapper .block .addclass .week{
+  display: flex;
+  flex-direction: row;
+  /* justify-content: center; */
+  align-items: center;
+  padding: 30rpx;
+}
+.wrapper .block .addclass .week .label{
+  flex-grow: 1;
+  font-size: 30rpx;
+  font-weight: bold;
+}
+.wrapper .block .addclass .week .sel{
+  flex-grow: 1;
+}
+.wrapper .block .addclass .week .sel .sel2{
+  display: flex; 
+  flex-direction: row-reverse;
+}
+.wrapper .block .addclass .week .sel .sel2 .text{
+  color:#1E90FF;
+  font-size: 30rpx;
+}
+.wrapper .block .addclass .color{
+  display: block;
+  padding: 30rpx;
+}
+.wrapper .block .addclass .color .label{
+  font-size: 30rpx;
+  font-weight: bold;
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 10rpx;
+  align-items: center;
+}
+.wrapper .block .addclass .color .label .selectcolor{
+  display: block;
+  margin-left: 20rpx;
+  width: 30rpx;
+  height: 30rpx;
+}
+.wrapper .block .addclass .color .sel{
+  float: left;
+}
+.wrapper .block .addclass .color .sel .coloritem{
+  float: left;
+  margin: 5rpx;
+  display: block;
+  border-radius: 100%;
+  width: 50rpx;
+  height: 50rpx;
+}
+.wrapper .block .seltime{
+  display: flex;
+  font-size: large;
+  font-weight: bold;
+  align-items: center;
+  justify-content: center;
+}
+.wrapper .block .seltime .mindate{
+  flex-grow: 1;
+  display: flex;
+  flex-direction: row-reverse;
+}
+.wrapper .block .seltime .maxdate{
+  flex-grow: 1;
+  display: flex;
+  flex-direction: row;
+}
+.wrapper .block .seltime .plar{
+  /* display: block; */
+  flex-grow: 2;
+  border-bottom-style: solid;
+  border-bottom-color:rgb(7,193,96);
+  display: flex;
+  justify-content: center;
+}
+
+
+
+.wrapper .block .inputplan{
+  display: flex;
+  flex-direction: row;
+  padding: 15rpx;
+}
+.wrapper .block .areatext{
+  height: 200rpx;
+}
+.wrapper .block .doit{
+  display: flex;
+  padding: 10rpx;
+  align-items: center;
+}
+.wrapper .block .doit .settime{
+  /* background-color: gray; */
+  font-weight: bold;
+  /* padding: 10rpx; */
+  font-size: small;
+  /* flex-grow: 1; */
+}
+.wrapper .block .doit .done{
+  font-size: large;
+  display: flex;
+  flex-direction: row-reverse;
+  flex-grow: 1;
+  margin-right: 15rpx ;
+}

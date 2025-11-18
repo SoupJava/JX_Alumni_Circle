@@ -1,0 +1,20 @@
+/* pages/ShowTomato/ShowTomato.wxss */
+page{
+  background-color: rgb(0,172,132);
+}
+.circle{
+  margin-top: 200rpx;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 40rpx;
+}
+.van-count-down{
+  font-size: 80rpx !important;
+  color:white !important;
+}
+.bbutton{
+  font-size: large !important;
+  font-weight: bolder;
+  box-shadow: 0 0 0 2rpx rgb(34, 34, 34) !important;
+  margin-bottom: 50rpx;
+}

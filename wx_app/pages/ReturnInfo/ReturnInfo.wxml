@@ -1,0 +1,63 @@
+<!--pages/ReturnInfo/ReturnInfo.wxml-->
+<van-notify id="van-notify" />
+<view class="page">
+  <view class="moments">
+    <view class="userid" bind:tap="LookUser" data-id="{{ReturnDetail.openid}}">
+      <van-image round width="3rem" height="3rem" fit="cover" src="{{ReturnDetail.userInfo.userImage}}" />
+      <view style="margin-left:5px;">
+        <view>
+          <text class="container-id">{{ReturnDetail.userInfo.userName}}</text>
+        </view>
+        <view>
+          <block wx:if="{{ReturnDetail.userInfo.userSex==0}}">
+            <text style="color:rgb(28, 28, 230)"> ♂ </text>
+          </block>
+          <block wx:else>
+            <text style="color:rgb(196, 53, 43)"> ♀ </text>
+          </block>
+          <text class="sj">{{ReturnDetail.sendTime}}</text>
+          <block wx:if="{{ReturnDetail.LorR==0}}">
+            <text style="color:rgb(139, 137, 6)"> 失者 </text>
+          </block>
+          <block wx:else>
+            <text style="color:rgb(139, 6, 121)"> 拾者 </text>
+          </block>
+        </view>
+      </view>
+    </view>
+    <view data-id="{{ReturnDetail._id}}" class="documents">
+      <view class="fonttext">
+        <view>
+          时间：<text>{{ReturnDetail.recordTime}}</text>
+        </view>
+        <view>
+          地点：<text>{{ReturnDetail.recordPlace}}</text>
+        </view>
+        <view>
+          联系方式：<text>{{ReturnDetail.recordContact}}</text>
+        </view>
+        <view>
+          备注：<text>{{ReturnDetail.recordOther}}</text>
+        </view>
+      </view>
+    </view>
+    <view wx:for="{{ReturnDetail.GoodsImage}}">
+      <van-image bindtap='LookPhoto' data-ind="{{i}}" data-photUrl='{{item}}' width="80%" fit="widthFix" src="{{item}}" />
+    </view>
+  </view>
+  <view wx:if="{{myuserinfo.openid==ReturnDetail.openid}}">
+    <view class="correct">
+      <view class="dm">
+        <van-button type="danger" size="small" bind:tap="dm">删除</van-button>
+      </view>
+    </view>
+  </view>
+  <view wx:else>
+    <view class="sendto">
+      <van-cell-group inset custom-class="cardstyle">
+        <van-cell icon="chat-o" is-link title="{{SaleDetail.userInfo.userSex==0?'私信他':'私信她'}}" link-type="navigateTo" url="/pages/ChatPage/ChatPage" />
+      </van-cell-group>
+    </view>
+  </view>
+</view>
+<van-dialog id="van-dialog" />

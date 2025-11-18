@@ -1,0 +1,12 @@
+<view class="top">
+  <view class="inputpic">
+    <view>
+      <van-uploader file-list="{{ ImageTemp }}" bind:delete="deleteImg" deletable="{{ true }}" max-count="12" bind:after-read="afterRead" />
+    </view>
+  </view>
+</view>
+
+<view class="submit">
+  <van-button round type="primary" size="large" bind:tap="sendComment">立 即 提 交 </van-button>
+</view>
+<van-notify id="van-notify" />

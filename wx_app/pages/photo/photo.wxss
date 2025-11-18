@@ -1,0 +1,22 @@
+/* pages/photo/photo.wxss */
+/* pages/photo/photo.wxss */
+.camera{
+  width: 100vw;
+  height: 100vh;
+}
+.record{
+  position: fixed;
+  bottom: 40rpx;
+  left: 0;
+  right: 0;
+  width: 150rpx;
+  height: 150rpx;
+  margin: auto;
+  border-radius: 50%;
+  /* border-color: black; */
+  border:10rpx solid;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

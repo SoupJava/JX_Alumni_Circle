@@ -1,0 +1,73 @@
+/* pages/SaleInfo/SaleInfo.wxss */
+.page{
+  display: flex;
+  flex-direction: column;
+}
+.userid{
+  display: flex;
+  flex-direction:row;
+  align-items:center;
+}
+.sj{
+  font-size:small;
+  color: gray;
+}
+.detail{
+  color:gray;
+}
+
+.moments{
+  margin: 3%;
+}
+.documents{
+  margin: 3%;
+}
+.photo-view{
+  margin-top: 20rpx;
+  margin-bottom: 20rpx;
+  height: 25rem;
+}
+.photo{
+  background: rgb(255, 166, 0);  
+  float: left;
+  margin-right: 10rpx;
+  margin-top: 10rpx;
+}
+.dzpl{
+  display: flex;
+  flex-direction: row;
+}
+.discuss-view{
+  background: white;
+  width: 97%;
+}
+
+.discuss{
+  background: rgb(235, 235, 235);
+  line-height: 35rpx;
+}
+
+.discuss label{
+  font-size: 12px;
+}
+
+.discuss-user{
+  color: rgb(88, 103, 138);
+}
+.sendto{
+  margin-bottom: 10rpx;
+}
+.sendto .cardstyle{
+  border:1rpx solid gray;
+}
+.correct{
+  display: flex;
+  flex-direction: row;
+  margin: 10rpx;
+  padding: 10rpx;
+}
+.correct .dm{
+  display: flex;
+  flex-direction: row-reverse;
+  flex-grow: 1;
+}

@@ -1,0 +1,56 @@
+<!--pages/userinfo/userinfo.wxml-->
+<van-notify id="van-notify" />
+<view class="page" style="background-color: {{userinfo.theme.color}};">
+<view class="regist">
+  <view class="welcome">
+    <view class='eye{{userinfo.theme.emoji}}'>
+      <view class="left" style="background-color: {{userinfo.theme.color}};animation-name: myeye{{userinfo.theme.emoji}};">
+        <view class="leftl"></view>
+      </view>
+      <view class="right" style="background-color: {{userinfo.theme.color}};animation-name: myeye{{userinfo.theme.emoji}};">
+        <view class="rightl"></view>
+      </view>
+    </view>
+  </view>
+  <view class="bg">
+    <view class='box'>
+      <view class="imginfo">
+        <van-image width="100" height="100" fit="cover" src="{{userinfo.userimage}}" />
+        <view class="message">
+          <view>
+            <van-icon name="fire-o" color="#EE9A49" /> 校园动态:{{jxCommentNum}}
+          </view>
+          <view>
+            <van-icon name="fire-o" color="#EE9A49" /> 问答求助:{{jxHelpNum}}
+          </view>
+          <view>
+            <van-icon name="fire-o" color="#EE9A49" /> 二手出售:{{jxSaleNum}}
+          </view>
+          <view>
+            <van-icon name="fire-o" color="#EE9A49" /> 失物招领:{{jxReturnNum}}
+          </view>
+        </view>
+      </view>
+      <van-cell-group>
+        <van-cell icon="smile" title="用户名" value="{{userinfo.username}}" />
+      </van-cell-group>
+      <van-cell-group>
+        <van-cell icon="manager" title="账号" value="{{userinfo.jxid}}" />
+      </van-cell-group>
+      <van-cell-group>
+        <van-cell icon="phone-circle" title="手机号" value="{{userinfo.telephone[0]+userinfo.telephone[1]+userinfo.telephone[2]+'********'}}" />
+      </van-cell-group>
+      <van-cell-group>
+        <van-cell icon="friends" title="性别" value="{{userinfo.sex==0?'男':'女'}}" />
+      </van-cell-group>
+      <van-cell-group>
+        <van-cell icon="chat-o"  is-link title="{{userinfo.sex==0?'私信他':'私信她'}}" link-type="navigateTo" url="/pages/ChatPage/ChatPage?openid={{userinfo.openid}}" />
+      </van-cell-group>
+      <van-cell-group>
+        <van-cell icon="browsing-history-o"  is-link title="{{userinfo.sex==0?'访问他的空间':'访问她的空间'}}" link-type="navigateTo" url="/pages/AllDynamics/AllDynamics?active=0&&openid={{userinfo.openid}}" />
+      </van-cell-group>
+    </view>
+  </view>
+</view>
+<van-toast id="van-toast" />
+</view>

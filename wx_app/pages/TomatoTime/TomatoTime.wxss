@@ -1,0 +1,59 @@
+/* pages/TomatoTime/TomatoTime.wxss */
+page{
+  background-color: #fff;
+}
+.top{
+  display: flex;
+  background-color: rgb(0,172,132);
+  height: 350rpx;
+  flex-direction: column;
+  border-bottom-left-radius: 30%;
+  border-bottom-right-radius: 30%;
+}
+.text{
+  color: white;
+  display: flex;
+  justify-content: center;
+}
+.settime{
+  margin-top:60rpx;
+  width: 80%;
+  margin-left: 10%;
+}
+.custom-button{
+  background-color: rgb(0,172,132);
+  color: white;
+  height: 30rpx;
+  width: 30rpx;
+  padding: 10rpx;
+  border-radius: 100%;
+  border-style: solid ;
+  border-left-color: #ffd01e;
+  border-top-color: #ffd01e;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.choice{
+  width: 80%;
+  margin-left: 10%;
+  margin-top:-100rpx;
+  background-color: rgb(240,240,240);
+  border-radius: 20rpx;
+  /* padding: 20rpx; */
+  border:3rpx solid ;
+}
+.grid{
+  border-radius: 20rpx;
+}
+.circle{
+  margin-top: 100rpx;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 40rpx;
+}
+.showtime{
+  font-size: 100rpx;
+  color:#00ac84;
+}

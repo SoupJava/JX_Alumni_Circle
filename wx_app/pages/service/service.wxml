@@ -1,0 +1,116 @@
+<!--pages/service/service.wxml-->
+<view class="top" style="background-color: rgb(0,172,132)">
+  <view class="welcome">
+    <view class='eye{{userinfo.theme.emoji}}'>
+      <view class="left" style="background-color:rgb(0,172,132);animation-name: myeye{{userinfo.theme.emoji}};">
+        <view class="leftl"></view>
+      </view>
+      <view class="right" style="background-color: rgb(0,172,132);animation-name: myeye{{userinfo.theme.emoji}};">
+        <view class="rightl"></view>
+      </view>
+    </view>
+  </view>
+</view>
+<view class="work">
+  <view class="title">我的服务</view>
+  <van-grid square gutter="{{ 10 }}">
+    <van-grid-item link-type="navigateTo" url="/pages/study/study?activename=a" text-class="gridtext" icon="cloud://cloud1-7g48m2a6e2ac093c.636c-cloud1-7g48m2a6e2ac093c-1320787210/icon/classtable.png" text="我的课表" />
+    <van-grid-item link-type="navigateTo" url="/pages/study/study?activename=b" text-class="gridtext" icon="cloud://cloud1-7g48m2a6e2ac093c.636c-cloud1-7g48m2a6e2ac093c-1320787210/icon/plan.png" text="我的计划" />
+    <van-grid-item text-class="gridtext" url="/pages/note/note" icon="cloud://cloud1-7g48m2a6e2ac093c.636c-cloud1-7g48m2a6e2ac093c-1320787210/icon/check.png" text="随笔笔记" />
+    <van-grid-item text-class="gridtext" url="/pages/userinfo/userinfo" icon="cloud://cloud1-7g48m2a6e2ac093c.636c-cloud1-7g48m2a6e2ac093c-1320787210/icon/apply.png" text="个人信息" />
+    <van-grid-item text-class="gridtext" url="/pages/CountDay/CountDay" icon="cloud://cloud1-7g48m2a6e2ac093c.636c-cloud1-7g48m2a6e2ac093c-1320787210/icon/message.png" text="倒数日" />
+    <van-grid-item text-class="gridtext" url="/pages/TomatoTime/TomatoTime" icon="cloud://cloud1-7g48m2a6e2ac093c.636c-cloud1-7g48m2a6e2ac093c-1320787210/clock.png" text="番茄钟" />
+    <!-- <van-grid-item text-class="gridtext" icon="cloud://cloud1-7g48m2a6e2ac093c.636c-cloud1-7g48m2a6e2ac093c-1320787210/icon/engsearch.png" text="英语四六级考试查询" /> -->
+  </van-grid>
+  <view class="title">班级服务</view>
+  <van-grid square gutter="{{ 10 }}">
+    <van-grid-item text-class="gridtext" url="/pages/InClassCollection/InClassCollection" icon="cloud://cloud1-7g48m2a6e2ac093c.636c-cloud1-7g48m2a6e2ac093c-1320787210/icon/classmessage.png" text="班内收集" />
+    <!-- <van-grid-item text-class="gridtext" icon="cloud://cloud1-7g48m2a6e2ac093c.636c-cloud1-7g48m2a6e2ac093c-1320787210/icon/check.png" text="课堂考勤" /> -->
+    <van-grid-item text-class="gridtext" url="/pages/ClassMessage/ClassMessage" icon="cloud://cloud1-7g48m2a6e2ac093c.636c-cloud1-7g48m2a6e2ac093c-1320787210/icon/classapp.png" text="班级信息" />
+  </van-grid>
+  <view class="title">文件转换</view>
+  <van-grid square gutter="{{ 10 }}">
+    <van-grid-item data-id="docx" bind:tap="onControl" text-class="gridtext" icon="cloud://cloud1-7g48m2a6e2ac093c.636c-cloud1-7g48m2a6e2ac093c-1320787210/change.png" text="docx转pdf" />
+    <van-grid-item data-id="ppt" bind:tap="onControl" text-class="gridtext" icon="cloud://cloud1-7g48m2a6e2ac093c.636c-cloud1-7g48m2a6e2ac093c-1320787210/change.png" text="ppt转pdf" />
+    <van-grid-item data-id="xlsx" bind:tap="onControl" text-class="gridtext" icon="cloud://cloud1-7g48m2a6e2ac093c.636c-cloud1-7g48m2a6e2ac093c-1320787210/change.png" text="xlsx转pdf" />
+    <van-grid-item data-id="doc" bind:tap="onControl" text-class="gridtext" icon="cloud://cloud1-7g48m2a6e2ac093c.636c-cloud1-7g48m2a6e2ac093c-1320787210/change.png" text="doc转docx" />
+  </van-grid>
+  <view class="zwbar"></view>
+  <view>
+  <van-tabbar active="{{ active }}" active-color="#07c160" inactive-color="#000" bind:change="onChange">
+    <van-tabbar-item url="/pages/index/index" name="home">
+      <image
+      slot="icon"
+      src="cloud://cloud1-7g48m2a6e2ac093c.636c-cloud1-7g48m2a6e2ac093c-1320787210/icon/广场-copy.png"
+      mode="aspectFit"
+      style="width: 30px; height: 18px;"
+    />
+    <image
+      slot="icon-active"
+      src="cloud://cloud1-7g48m2a6e2ac093c.636c-cloud1-7g48m2a6e2ac093c-1320787210/icon/广场选中.png"
+      mode="aspectFit"
+      style="width: 45px; height: 27px;"
+    />
+    广场
+    </van-tabbar-item>
+    <van-tabbar-item url="/pages/service/service" name="service" >
+      <image
+      slot="icon"
+      src="cloud://cloud1-7g48m2a6e2ac093c.636c-cloud1-7g48m2a6e2ac093c-1320787210/icon/模版广场.png"
+      mode="aspectFit"
+      style="width: 30px; height: 18px;"
+    />
+    <image
+      slot="icon-active"
+      src="cloud://cloud1-7g48m2a6e2ac093c.636c-cloud1-7g48m2a6e2ac093c-1320787210/icon/服务.png"
+      mode="aspectFit"
+      style="width: 45px; height: 27px;"
+    />
+    服务
+    </van-tabbar-item>
+    <van-tabbar-item url="/pages/tree/tree" name="tree">
+      <image
+      slot="icon"
+      src="cloud://cloud1-7g48m2a6e2ac093c.636c-cloud1-7g48m2a6e2ac093c-1320787210/image.png"
+      mode="aspectFit"
+      style="width: 45px; height: 45px;"
+    />
+    </van-tabbar-item>
+    <van-tabbar-item url="/pages/Motion/Motion" name="money">
+      <image
+      slot="icon"
+      src="cloud://cloud1-7g48m2a6e2ac093c.636c-cloud1-7g48m2a6e2ac093c-1320787210/icon/篮球.png"
+      mode="aspectFit"
+      style="width: 30px; height: 18px;"
+    />
+    <image
+      slot="icon-active"
+      src="cloud://cloud1-7g48m2a6e2ac093c.636c-cloud1-7g48m2a6e2ac093c-1320787210/icon/心里健康.png"
+      mode="aspectFit"
+      style="width: 45px; height: 27px;"
+    />
+    运动
+    </van-tabbar-item>
+    <van-tabbar-item url="/pages/mySet/mySet" name="user">
+      <image
+      slot="icon"
+      src="cloud://cloud1-7g48m2a6e2ac093c.636c-cloud1-7g48m2a6e2ac093c-1320787210/icon/我的.png"
+      mode="aspectFit"
+      style="width: 30px; height: 18px;"
+    />
+    <image
+      slot="icon-active"
+      src="cloud://cloud1-7g48m2a6e2ac093c.636c-cloud1-7g48m2a6e2ac093c-1320787210/icon/我的-copy.png"
+      mode="aspectFit"
+      style="width: 45px; height: 27px;"
+    />
+    我的
+    </van-tabbar-item>
+  </van-tabbar>
+</view>
+</view>
+<van-toast id="van-toast" />
+<van-popup show="{{ show }}" position="bottom" custom-style="height: 10%;" bind:close="onControl" round>
+  <van-cell size="large" is-link title="微信聊天文件" icon="wechat" bind:tap="upload"/>
+</van-popup>
+<van-notify id="van-notify" />

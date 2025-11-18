@@ -1,0 +1,126 @@
+/* pages/note/note.wxss */
+.AddPlan{
+  top:75%;
+  left: 80%;
+  display: flex;
+  position: fixed;
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 100%;
+  background-color: rgb(255, 166, 0);
+  align-items: center;
+  justify-content: center;
+  z-index: 3;
+}
+.planContainer{
+  width: 100%;
+  height: 1250rpx;
+}
+.planclose{
+  display: flex;
+  flex-grow: 1;
+  flex-direction: row-reverse;
+}
+.planContainer .UnDonePlan{
+  background-color: #fff;
+  height: 100rpx;
+  display: flex;
+  flex-direction: row;
+  margin: 40rpx;
+  padding: 30rpx;
+  border-radius: 30rpx;
+  align-items: center;
+}
+.planContainer .UnDonePlan .UnDoneLabel{
+  display: flex;
+  flex-direction: column;
+}
+.planContainer .UnDonePlan .UnDoneLabel .l1{
+  font-weight: bold;
+  /* font-size: large; */
+}
+.planContainer .UnDonePlan .UnDoneLabel .l2{
+  font-size: small;
+  display: flex;
+  flex-direction: row;
+}
+.planContainer .DonePlan{
+  background-color: #fff;
+  height: 100rpx;
+  display: flex;
+  margin: 40rpx;
+  padding: 30rpx;
+  border-radius: 30rpx;
+  align-items: center;
+}
+.planContainer .DonePlan .UnDoneLabel{
+  display: flex;
+  flex-direction: column;
+  color: gray;
+}
+.planContainer .DonePlan .UnDoneLabel .l1{
+  font-weight: unset;
+}
+.planContainer .DonePlan .UnDoneLabel .l2{
+  font-size: small;
+  display: flex;
+  flex-direction: row;
+}
+.AddPlan{
+  top:75%;
+  left: 80%;
+  display: flex;
+  position: fixed;
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 100%;
+  background-color: rgb(255, 166, 0);
+  align-items: center;
+  justify-content: center;
+  z-index: 3;
+}
+.wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.wrapper .block {
+  width: 80%;
+  background-color: #fff;
+  border-radius: 25rpx;
+  padding: 10rpx;
+  justify-content: center;
+}
+.wrapper .block .close{
+  display: flex;
+  flex-direction: row-reverse;
+}
+.wrapper .block .inputplan{
+  display: flex;
+  flex-direction: row;
+  padding: 15rpx;
+}
+.wrapper .block .areatext{
+  height: 200rpx;
+}
+.wrapper .block .doit{
+  display: flex;
+  padding: 10rpx;
+  align-items: center;
+}
+.wrapper .block .doit .settime{
+  /* background-color: gray; */
+  font-weight: bold;
+  /* padding: 10rpx; */
+  font-size: small;
+  /* flex-grow: 1; */
+}
+.wrapper .block .doit .done{
+  font-size: large;
+  display: flex;
+  flex-direction: row-reverse;
+  flex-grow: 1;
+  margin-right: 15rpx ;
+}

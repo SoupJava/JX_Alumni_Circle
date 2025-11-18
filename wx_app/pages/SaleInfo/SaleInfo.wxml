@@ -1,0 +1,47 @@
+<!--pages/SaleInfo/SaleInfo.wxml-->
+<view class="page">
+  <view class="moments">
+    <view class="userid" bind:tap="LookUser" data-id="{{SaleDetail.openid}}">
+      <van-image round width="3rem" height="3rem" fit="cover" src="{{SaleDetail.userInfo.userImage}}" />
+      <view style="margin-left:5px;">
+        <view>
+          <text class="container-id">{{SaleDetail.userInfo.userName}}</text>
+        </view>
+        <view>
+          <block wx:if="{{SaleDetail.userInfo.userSex==0}}">
+            <text style="color:rgb(28, 28, 230)"> ♂ </text>
+          </block>
+          <block wx:else>
+            <text style="color:rgb(196, 53, 43)"> ♀ </text>
+          </block>
+          <text class="sj">{{SaleDetail.sendTime}}</text>
+        </view>
+      </view>
+    </view>
+    <view class="documents" data-id="{{SaleDetail._id}}">
+      <view class="fonttext">
+        <text>
+          {{SaleDetail.SaleMessage}}
+        </text>
+      </view>
+    </view>
+    <view wx:for="{{SaleDetail.GoodsImage}}">
+      <van-image bindtap='LookPhoto' data-ind="{{i}}" data-photUrl='{{item}}' width="80%" fit="widthFix" src="{{item}}" />
+    </view>
+  </view>
+  <view wx:if="{{myuserinfo.openid==SaleDetail.openid}}">
+    <view class="correct">
+      <view class="dm">
+        <van-button type="danger" size="small" bind:tap="dm">删除</van-button>
+      </view>
+    </view>
+  </view>
+  <view wx:else>
+    <view class="sendto">
+      <van-cell-group inset custom-class="cardstyle">
+        <van-cell icon="chat-o"  is-link title="{{SaleDetail.userInfo.userSex==0?'私信他':'私信她'}}" link-type="navigateTo" url="/pages/ChatPage/ChatPage" />
+      </van-cell-group>
+    </view>
+  </view>
+</view>
+<van-dialog id="van-dialog" />

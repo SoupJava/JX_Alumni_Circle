@@ -1,0 +1,222 @@
+/* pages/regist/regist.wxss */
+page{
+  height: 100%;
+  background-color: rgb(0, 172, 132);
+}
+.regist{
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+.welcome{
+  padding: 5%;
+  color: #fff;
+  font-size: 40rpx;
+  font-weight: bold;
+}
+/* 默认形状 */
+.welcome .eye{
+  display: flex;
+  flex-direction: row;
+  margin-top: 100rpx;
+  height: 150rpx;
+}
+.welcome .eye .left{
+  display: flex;
+  width: 100rpx;
+  height: 100rpx;
+  background-color: rgb(0, 172, 132);
+  border-radius: 100%;
+  border-style: solid;
+  border-width: 40rpx;
+  animation-name:myeye;
+  animation-duration:4s;
+  animation-iteration-count: infinite;
+  box-shadow:1px 1px 1px 1px rgb(233, 233, 233);
+}
+.welcome .eye .right{
+  display: flex;
+  width: 100rpx;
+  height: 100rpx;
+  background-color: rgb(0, 172, 132);
+  border-radius: 100%;
+  margin-left: 80rpx;
+  border-style: solid;
+  border-width: 40rpx;
+  animation-name:myeye;
+  animation-duration:4s;
+  animation-iteration-count: infinite;
+  box-shadow:1px 1px 1px 1px rgb(233, 233, 233);
+}
+@keyframes myeye{
+  0%{height: 100rpx;}
+  40%{height: 100rpx;}
+  47%{height: 0rpx;}
+  50%{height:100rpx;}
+  53%{height: 0rpx;}
+  60%{height: 100rpx;}
+  100%{height: 100rpx;}
+}
+/* 男生 */
+.welcome .eye0{
+  display: flex;
+  flex-direction: row;
+  margin-top: 100rpx;
+  height: 150rpx;
+}
+.welcome .eye0 .left{
+  display: flex;
+  width: 100rpx;
+  height: 100rpx;
+  background-color: rgb(0, 172, 132);
+  border-radius: 100%;
+  border-style: solid;
+  border-width: 40rpx;
+  animation-name:myeye0;
+  animation-duration:5s;
+  animation-iteration-count: infinite;
+  box-shadow:1px 1px 1px 1px rgb(233, 233, 233);
+}
+.welcome .eye0 .right{
+  display: flex;
+  width: 100rpx;
+  height: 100rpx;
+  background-color: rgb(0, 172, 132);
+  border-radius: 100%;
+  margin-left: 80rpx;
+  border-style: solid;
+  border-width: 40rpx;
+  animation-name:myeye0;
+  animation-duration:3s;
+  animation-iteration-count: infinite;
+  box-shadow:1px 1px 1px 1px rgb(233, 233, 233);
+}
+@keyframes myeye0{
+  0%{
+    border-left-width: 40rpx;
+    border-right-width: 40rpx;
+    border-bottom-width: 40rpx;
+    border-top-width: 40rpx;
+  }
+  10%{
+    border-left-width: 10rpx;
+    border-right-width: 70rpx;
+    border-bottom-width: 10rpx;
+    border-top-width: 70rpx;
+  }
+  30%{
+    border-left-width: 70rpx;
+    border-right-width: 10rpx;
+    border-bottom-width: 10rpx;
+    border-top-width: 70rpx;
+  }
+  50%{
+    border-left-width: 70rpx;
+    border-right-width: 10rpx;
+    border-bottom-width: 70rpx;
+    border-top-width: 10rpx;
+  }
+  70%{
+    border-left-width: 10rpx;
+    border-right-width: 70rpx;
+    border-bottom-width: 70rpx;
+    border-top-width: 10rpx;
+  }
+  100%{
+    border-left-width: 40rpx;
+    border-right-width: 40rpx;
+    border-bottom-width: 40rpx;
+    border-top-width: 40rpx;
+  }
+}
+/* 女生 */
+.welcome .eye1{
+  display: flex;
+  flex-direction: row;
+  margin-top: 100rpx;
+  height: 150rpx;
+}
+.welcome .eye1 .left{
+  display: flex;
+  width: 100rpx;
+  height: 100rpx;
+  background-color: rgb(0, 172, 132);
+  border-radius: 100%;
+  border-style: solid;
+  border-width: 40rpx;
+  animation-name:myeye1;
+  animation-duration:4s;
+  animation-iteration-count: infinite;
+  box-shadow:1px 1px 1px 1px rgb(233, 233, 233);
+}
+.welcome .eye1 .right{
+  display: flex;
+  width: 100rpx;
+  height: 100rpx;
+  background-color: rgb(0, 172, 132);
+  border-radius: 100%;
+  margin-left: 80rpx;
+  border-style: solid;
+  border-width: 40rpx;
+  animation-name:myeye1;
+  animation-duration:4s;
+  animation-iteration-count: infinite;
+  box-shadow:1px 1px 1px 1px rgb(233, 233, 233);
+}
+@keyframes myeye1{
+  0%{border-top-width:40rpx;border-bottom-width:40rpx;height: 100rpx;background-color: rgb(0, 172, 132);}
+  25%{border-top-width:40rpx;border-bottom-width:40rpx;height: 100rpx;background-color: rgb(0, 172, 132);}
+  40%{border-top-width:60rpx;border-bottom-width:60rpx;height: 50rpx;background-color: rgb(0, 146, 112);}
+  60%{border-top-width:60rpx;border-bottom-width:60rpx;height: 50rpx;background-color: rgb(0, 146, 112);}
+  75%{border-top-width:40rpx;border-bottom-width:40rpx;height: 100rpx;background-color: rgb(0, 172, 132);}
+  100%{border-top-width:40rpx;border-bottom-width:40rpx;height: 100rpx;background-color: rgb(0, 172, 132);}
+}
+.bg{
+  flex-grow: 1;
+  display: flex;
+  height: 100%;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.bg .box{
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  border-radius: 10%;
+  box-shadow:1px 1px 1px 1px rgb(233, 233, 233);
+  padding: 5%;
+  /* justify-content: center; */
+  /* align-items: center; */
+}
+.bg .box van-cell-group{
+  margin-bottom: 5rpx;
+}
+.box .week{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 5rpx;
+  margin-bottom: 10rpx;
+  margin-left:30rpx;
+}
+.box .week .label{
+  /* width: 50%; */
+  margin-left:10rpx;
+  flex-grow: 1;
+  /* font-size: 30rpx; */
+  /* font-weight: bold; */
+}
+.box .week .sel{
+  /* width: 50%; */
+  flex-grow: 1;
+}
+.box .weel .sel .sel2{
+  display: flex; 
+  flex-direction: row-reverse;
+}
+.box .week .sel .sel2 .text{
+  color:#1E90FF;
+  font-size: 30rpx;
+}

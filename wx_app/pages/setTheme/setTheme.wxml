@@ -1,0 +1,44 @@
+<!--pages/setTheme/setTheme.wxml-->
+<van-notify id="van-notify" />
+<view class="page" style="background-color: {{themecolor}};">
+  <view class="regist">
+    <view class="welcome">
+      <view class='eye{{themeemoji}}'>
+        <view class="left" style="background-color: {{themecolor}};animation-name: myeye{{themeemoji}};">
+          <view class="leftl"></view>
+        </view>
+        <view class="right" style="background-color: {{themecolor}};animation-name: myeye{{themeemoji}};">
+          <view class="rightl"></view>
+        </view>
+      </view>
+    </view>
+    <view class="bg">
+      <view class='box'>
+        <view class="color">
+          <view class="label">
+            <view>主题颜色</view>
+          </view>
+          <view class="sel">
+            <block wx:for="{{kcbcolor}}" wx:key="item">
+              <view style="background-color: {{item}};" data-it="{{item}}" class="coloritem" bind:tap="Changecolor"></view>
+            </block>
+          </view>
+        </view>
+        <view class="emoji">
+          <view class="label">
+            <view>小新表情</view>
+          </view>
+          <view class="sel">
+            <block wx:for="{{kcbemoji}}" wx:key="item" wx:for-index="ind">
+              <view class="emojiitem" bind:tap="ChangeEmoji" data-it="{{ind}}">
+                <van-tag mark type="success" size="medium" mark>{{item}}</van-tag>
+              </view>
+            </block>
+          </view>
+        </view>
+        <van-button type="primary" size="large" bind:tap="OKCorrect">确 定 修 改</van-button>
+      </view>
+    </view>
+  </view>
+  <van-toast id="van-toast" />
+</view>

@@ -1,0 +1,146 @@
+<!--pages/send/send.wxml-->
+<view>
+  <view class="select">
+    <van-cell-group>
+      <van-cell icon="wap-nav" title="选择板块" value="{{actions[selid].name}}" bind:tap="ShowSelect">
+        <van-icon slot="right-icon" name="arrow" />
+      </van-cell>
+    </van-cell-group>
+    <van-action-sheet show="{{ show }}" actions="{{ actions }}" description="选择板块" bind:close="onClose" bind:select="onSelect" />
+  </view>
+  <block wx:if="{{selid==0}}">
+    <view>
+      <view class="inputshow">
+        <textarea maxlength='500' placeholder-style="color:#5F5F5F;" bindinput='limitWord' model:value="{{content}}" placeholder='尽情发表此刻的心情吧！'></textarea>
+        <view class="clear">
+          <text style="float: right">{{currentWord}}/{{maxWord}}(最多可输入500字)</text>
+        </view>
+      </view>
+      <van-divider />
+      <view class="inputpic">
+        <view>
+          <van-uploader file-list="{{ ImageTemp }}" bind:delete="deleteImg" deletable="{{ true }}" max-count="12" bind:after-read="afterRead" />
+        </view>
+      </view>
+      <van-divider />
+      <view>
+        <van-notice-bar left-icon="volume-o" text="❤ 小新提醒:请务必遵守圈内规范，如有违规会被删帖，禁言乃至封号！。❤" />
+      </view>
+    </view>
+    <view class="add">
+      <van-button round type="primary" icon="plus" size="large" bind:tap="sendComment">发 布 </van-button>
+    </view>
+  </block>
+  <block wx:if="{{selid==1}}">
+    <view>
+      <view class="inputshow">
+        <textarea maxlength='500' placeholder-style="color:#5F5F5F;" bindinput='limitWord' model:value="{{content}}" placeholder='有什么疑问？问问大家吧！'></textarea>
+        <view class="clear">
+          <text style="float: right">{{currentWord}}/{{maxWord}}(最多可输入500字)</text>
+        </view>
+      </view>
+      <van-divider />
+      <view class="inputpic">
+        <view>
+          <van-uploader file-list="{{ ImageTemp }}" bind:delete="deleteImg" deletable="{{ true }}" max-count="12" bind:after-read="afterRead" />
+        </view>
+      </view>
+      <van-divider />
+      <view>
+        <van-notice-bar left-icon="volume-o" text="小新提醒:请务必遵守圈内规范，如有违规会被删帖，禁言乃至封号！。" />
+      </view>
+    </view>
+    <view class="add">
+      <van-button round type="primary" icon="plus" size="large" bind:tap="sendHelp">发 布 </van-button>
+    </view>
+  </block>
+  <block wx:if="{{selid==2}}">
+    <view>
+      <view class="inputshow">
+        <textarea maxlength='500' placeholder-style="color:#5F5F5F;" bindinput='limitWord' model:value="{{content}}" placeholder='把闲置物品挂上来吧，会有需要的人的。'></textarea>
+        <view class="clear">
+          <text style="float: right">{{currentWord}}/{{maxWord}}(最多可输入500字)</text>
+        </view>
+      </view>
+      <van-divider />
+      <view class="inputpic">
+        <view>
+          <van-uploader file-list="{{ ImageTemp }}" bind:delete="deleteImg" deletable="{{ true }}" max-count="12" bind:after-read="afterRead" />
+        </view>
+      </view>
+      <van-divider />
+      <view>
+        <van-notice-bar left-icon="volume-o" text="小新提醒:请务必遵守圈内规范，如有违规会被删帖，禁言乃至封号！。" />
+      </view>
+    </view>
+    <view class="add">
+      <van-button round type="primary" icon="plus" size="large" bind:tap="sendSale">发 布 </van-button>
+    </view>
+  </block>
+  <block wx:if="{{selid==3}}">
+    <view class="week">
+      <view class="sel">
+        <view class="sel2">
+          <van-radio-group value="{{returnMessage.LorR}}" bind:change="ChangeLorR" direction="horizontal">
+            <van-radio name="0" icon-size="30rpx">
+              <view class="text">
+                我丢掉了
+              </view>
+            </van-radio>
+            <van-radio name="1" icon-size="30rpx" style="margin-left:20rpx;">
+              <view class="text">
+                我捡到了
+              </view>
+            </van-radio>
+          </van-radio-group>
+        </view>
+      </view>
+    </view>
+    <view>
+      <view bind:tap="showseltime" style="background-color:white;padding: 15rpx;border-radius: 10rpx;">
+        <view>
+          <van-icon name="clock-o" /> {{returnMessage.sendtime==''?'何时（失/拾）此物？':returnMessage.sendtime}}
+        </view>
+      </view>
+    </view>
+    <van-divider />
+    <view>
+      <van-cell-group>
+        <van-field model:value="{{ returnMessage.place }}" bindinput="placeInput" placeholder="请输入（失/拾）地点" border="{{ false }}" />
+      </van-cell-group>
+    </view>
+    <van-divider />
+    <view>
+      <van-field value="{{ returnMessage.contract }}" bindinput="contractInput" placeholder="请输入联系方式" border="{{ false }}" />
+    </view>
+    <van-divider />
+    <view class="inputshow">
+      <textarea maxlength='300' placeholder-style="color:#a0a0a0;" bindinput='limitWord' value="{{returnMessage.describe}}" placeholder='在此处输入备注'></textarea>
+      <view class="clear">
+        <text style="float: right">{{currentWord}}/{{returnMessage.maxWord}}(最多可输入300字)</text>
+      </view>
+    </view>
+    <van-divider />
+    <view class="inputpic">
+      <view>
+        <van-uploader file-list="{{ ImageTemp }}" bind:delete="deleteImg" deletable="{{ true }}" max-count="12" bind:after-read="afterRead" />
+      </view>
+    </view>
+    <van-divider />
+    <view>
+      <van-notice-bar left-icon="volume-o" text="小新提醒:请务必遵守圈内规范，如有违规会被删帖，禁言乃至封号！。" />
+    </view>
+    <view class="add">
+      <van-button round type="primary" icon="plus" size="large" bind:tap="sendReturn">发 布 </van-button>
+    </view>
+  </block>
+</view>
+<view>
+  <van-action-sheet show="{{ seltime }}" title="{{datetime.showDate}}" bind:close="closeseltime">
+    <van-datetime-picker type="datetime" value="{{ datetime.currentDate }}" min-date="{{ datetime.minDate }}" max-date="{{ datetime.maxDate }}" bind:input="changeseltime" bind:confirm="confirmtime" bind:cancel="closeseltime" />
+  </van-action-sheet>
+</view>
+<view class="zwbar">
+</view>
+<van-toast id="van-toast" />
+<van-notify id="van-notify" />

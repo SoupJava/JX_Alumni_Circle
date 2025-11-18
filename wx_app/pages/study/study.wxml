@@ -1,0 +1,283 @@
+<!--pages/study/study.wxml-->
+<van-notify id="van-notify" />
+<view class="AddPlan" data-it="{{additem}}" bindtap="addmessage">
+  <van-icon name="plus" color="white" size="60rpx" />
+</view>
+<view>
+  <van-tabs active="{{ activename }}" swipeable animated bind:change="ShowAddPlan">
+    <van-tab title="我的课表" name="a">
+      <!-- 日期区域 -->
+      <view class="date">
+        <view class="day">
+          <view class="changeweek" bind:tap="changedsweek">
+            <block wx:if="{{dsweek==1}}">
+              <view style="color:{{kcbcolor[4]}} ;">单</view>
+              <van-icon name="exchange" color="{{kcbcolor[4]}}" />
+            </block>
+            <block wx:else>
+              <view style="color:{{kcbcolor[13]}} ;">双</view>
+              <van-icon name="exchange" color="{{kcbcolor[13]}}" />
+            </block>
+          </view>
+          <view class="week {{todayMonth == monthNum && day == item?'todayDate':''}}" wx:for="{{nowDay}}" wx:key="index">
+            <view class="week-item">周{{week[index]}}</view>
+          </view>
+        </view>
+      </view>
+
+      <!-- 课表区域 -->
+      <scroll-view scroll-x="false" scroll-y class="courseScroll">
+        <view class="courseContent">
+          <view class="courseTime">
+            <view wx:for="{{10}}" wx:key="index" class="left">
+              <view class="number">{{item+1}}</view>
+              <view class="course-time" bind:tap="settime" data-in="{{index}}" data-st="{{course_time[index][0]}}" data-en="{{course_time[index][1]}}">
+                <view class="time-start">{{course_time[index][0]}}</view>
+                <view class="time-end">{{course_time[index][1]}}</view>
+              </view>
+            </view>
+            <view>
+              <view>其他课程</view>
+            </view>
+          </view>
+          <view class="course">
+            <view wx:for="{{wList}}" wx:key="index">
+              <block wx:if="{{dsweek==item.dsweek}}">
+                <view class="kcb-item" style="margin-left:{{item.days!=7?(item.days)*100:0}}rpx;margin-top:{{(item.jie-1)*110+4}}rpx;height:{{2*110 - 8}}rpx;">
+                  <view class="smalltext" style="background-color:{{item.color}}" data-it="{{item}}" bindtap="SelClass">
+                    <view class="smalltextName">{{item.name}}/{{item.teacher}}</view>
+                    <view class="smalltextAddress">{{item.address}}</view>
+                  </view>
+                </view>
+              </block>
+            </view>
+          </view>
+        </view>
+      </scroll-view>
+    </van-tab>
+    <van-tab title="我的计划"  name="b">
+      <view>
+        <scroll-view scroll-y class="planContainer">
+          <view class="UnDonePlan" wx:for="{{pList0}}" wx:key="index">
+            <block wx:if="{{item.door=='0'}}">
+              <van-checkbox value="{{ item.door=='0'?false:true }}" shape="square" data-it="{{item}}" bind:change="changeDone">
+              </van-checkbox>
+              <view class="UnDoneLabel" bind:tap="changeplan" data-it="{{item}}">
+                <view class="l1">
+                  {{item.pMessage}}
+                </view>
+                <view class="l2">
+                  {{item.pTime}}
+                  <view style="margin-left:10rpx;color:{{item.overTime==1?'black':'red'}}">
+                    <van-icon name="clock-o" />
+                  </view>
+                </view>
+              </view>
+              <view class="planclose" bind:tap="deleteplan" data-it="{{item}}">
+                <view>
+                  <van-icon name="cross" />
+                </view>
+              </view>
+            </block>
+          </view>
+          <van-divider contentPosition="left">已完成{{pList1.length}}项
+            <van-icon name="completed" />
+          </van-divider>
+          <view class="DonePlan" wx:for="{{pList1}}" wx:key="index">
+            <block wx:if="{{item.door=='1'}}">
+              <van-checkbox value="{{ item.door=='0'?false:true }}" shape="square" data-it="{{item}}" bind:change="changeDone" checked-color="#D3D3D3">
+              </van-checkbox>
+              <view class="UnDoneLabel" bind:tap="changeplan" data-it="{{item}}">
+                <view class="l1">
+                  {{item.pMessage}}
+                </view>
+                <view class="l2">
+                  {{item.pTime}}
+                  <view style="margin-left:10rpx;">
+                    <van-icon name="clock-o" />
+                  </view>
+                </view>
+              </view>
+              <view class="planclose" bind:tap="deleteplan" data-it="{{item}}">
+                <view>
+                  <van-icon name="cross" />
+                </view>
+              </view>
+            </block>
+          </view>
+        </scroll-view>
+      </view>
+    </van-tab>
+  </van-tabs>
+</view>
+<view>
+  <van-overlay show="{{ showplan }}" z-index="4">
+    <view class="wrapper">
+      <view class="block">
+        <view class="close" bindtap="closeSelClass">
+          <van-icon name="cross" />
+        </view>
+        <view class="inputplan">
+          <view style="display: flex;flex-direction: column;margin-right: 10rpx;">
+            <van-icon name="circle" />
+          </view>
+          <textarea class="areatext" value="{{planmessage.pMessage}}" maxlength="60" auto-heigh="true" placeholder-style="color:gray;" placeholder="请输入计划内容" bindinput="inputChange"></textarea>
+        </view>
+        <view class="doit">
+          <view class="settime">
+            <view bind:tap="showseltime" style="background-color: rgb(235, 235, 235);padding: 15rpx;border-radius: 10rpx;">
+              <view>
+                <van-icon name="clock-o" /> {{planmessage.pTime==''?'设置提醒时间':planmessage.pTime}}
+              </view>
+            </view>
+          </view>
+          <view class="done" style="color: {{planmessage.pMessage==''?'#ECECEC':'black'}};" bind:tap="addok">
+            完成
+          </view>
+        </view>
+      </view>
+    </view>
+  </van-overlay>
+</view>
+<view>
+  <van-action-sheet show="{{ seltime }}" title="{{datetime.showDate}}" bind:close="closeseltime">
+    <van-datetime-picker type="datetime" value="{{ datetime.currentDate }}" min-date="{{ datetime.minDate }}" max-date="{{ datetime.maxDate }}" bind:input="changeplantime" bind:confirm="confirmtime" bind:cancel="cancelseltime" />
+  </van-action-sheet>
+</view>
+<view>
+  <van-overlay show="{{ showtime }}" z-index="4">
+    <view class="wrapper">
+      <view class="block">
+        <view class="close" bindtap="closeSelClass">
+          <van-icon name="cross" />
+        </view>
+        <block wx:if="{{setstarttime==''}}">
+          <view class="seltime">
+            <view class="mindate">
+              {{mindate}}——
+            </view>
+            <view class="plar">{{setendtime}}</view>
+            <view class="maxdate">
+              ——{{maxdate}}
+            </view>
+          </view>
+          <view>
+            <van-datetime-picker data-it="0" confirm-button-text="" cancel-button-text="" type="time" value="{{ setendtime }}" min-hour="{{ 0 }}" max-hour="{{ 24 }}" bind:input="changedate" />
+          </view>
+        </block>
+        <block wx:else>
+          <view class="seltime">
+            <view class="mindate">
+              {{mindate}}——
+            </view>
+            <view class="plar">{{setstarttime}}</view>
+            <view class="maxdate">
+              ——{{maxdate}}
+            </view>
+          </view>
+          <view>
+            <van-datetime-picker data-it="1" confirm-button-text="" cancel-button-text="" type="time" value="{{ setstarttime }}" min-hour="{{ 0 }}" max-hour="{{ 24 }}" bind:input="changedate" />
+          </view>
+        </block>
+        <van-button type="primary" size="large" bind:tap="keeptime">保 存</van-button>
+      </view>
+    </view>
+  </van-overlay>
+</view>
+<view>
+  <van-overlay show="{{ showclass }}" z-index="4">
+    <view class="wrapper">
+      <view class="block">
+        <view class="close" bindtap="closeSelClass">
+          <van-icon name="cross" />
+        </view>
+        <block wx:if="{{selclass==''}}">
+          <view class="addclass">
+            <view>
+              <van-cell-group>
+                <van-field model:value="{{ addclassname }}" required clearable label="课程名" left-icon="label-o" placeholder="请输入课程名称" />
+                <van-field model:value="{{ addclassaddress }}" clearable label="教室" left-icon="home-o" placeholder="请输入上课地点" />
+                <van-field model:value="{{ addclassteacher }}" clearable label="老师" left-icon="smile-o" placeholder="请输入老师名称" />
+              </van-cell-group>
+            </view>
+            <view class="time">
+              <view class="label">上课时间</view>
+              <view>
+                <van-tabs active="{{ days }}" bind:change="Changedays">
+                  <van-tab title="周日" name="7"></van-tab>
+                  <van-tab title="周一" name="1"></van-tab>
+                  <van-tab title="周二" name="2"></van-tab>
+                  <van-tab title="周三" name="3"></van-tab>
+                  <van-tab title="周四" name="4"></van-tab>
+                  <van-tab title="周五" name="5"></van-tab>
+                  <van-tab title="周六" name="6"></van-tab>
+                </van-tabs>
+              </view>
+              <view>
+                <van-tabs active="{{ jie }}" bind:change="Changejie" color="{{kcbcolor[5]}}">
+                  <van-tab title="1-2" name="1"></van-tab>
+                  <van-tab title="3-4" name="3"></van-tab>
+                  <van-tab title="5-6" name="5"></van-tab>
+                  <van-tab title="7-8" name="7"></van-tab>
+                  <van-tab title="9-10" name="9"></van-tab>
+                  <van-tab title="其他" name="11"></van-tab>
+                </van-tabs>
+              </view>
+            </view>
+            <view class="week">
+              <view class="label">上课周数</view>
+              <view class="sel">
+                <view class="sel2">
+                  <van-radio-group value="{{ addclassdsweek }}" bind:change="Changedsweek" direction="horizontal">
+                    <van-radio name="1" icon-size="30rpx">
+                      <view class="text">
+                        单周
+                      </view>
+                    </van-radio>
+                    <van-radio name="2" icon-size="30rpx">
+                      <view class="text">
+                        双周
+                      </view>
+                    </van-radio>
+                  </van-radio-group>
+                </view>
+              </view>
+            </view>
+            <view class="color">
+              <view class="label">
+                <view>颜色</view>
+                <view class="selectcolor" style="background-color: {{addclasscolor}};"></view>
+              </view>
+              <view class="sel">
+                <block wx:for="{{kcbcolor}}" wx:key="item">
+                  <view style="background-color: {{item}};" data-it="{{item}}" class="coloritem" bind:tap="Changecolor"></view>
+                </block>
+              </view>
+            </view>
+            <view>
+              <van-button type="primary" size="large" bind:tap="keepaddclass">保 存</van-button>
+            </view>
+          </view>
+        </block>
+        <block wx:else>
+          <view class="classdetail">
+            <view>课程名称：{{selclass.name}}</view>
+            <view>教师：{{selclass.teacher}}</view>
+            <view>时间：周{{selclass.days}}，第{{selclass.jie}}-{{selclass.jie+1}}节课</view>
+            <view>地点：{{selclass.address}}</view>
+          </view>
+          <view class="button">
+            <view>
+              <van-button type="danger" size="small" bind:tap="deleteClass">删除</van-button>
+            </view>
+            <view class="okbutton">
+              <van-button type="primary" size="small" bindtap="closeSelClass">确定</van-button>
+            </view>
+          </view>
+        </block>
+      </view>
+    </view>
+  </van-overlay>
+</view>
+<van-toast id="van-toast" />
+<van-dialog id="van-dialog" />

@@ -1,0 +1,30 @@
+<!--pages/noteKeep/noteKeep.wxml-->
+<van-notify id="van-notify" />
+<view class="page" style="background-color: {{userinfo.theme.color}};">
+  <view class="regist">
+    <view class="welcome">
+      <view class='eye{{userinfo.theme.emoji}}'>
+        <view class="left" style="background-color: {{userinfo.theme.color}};animation-name: myeye{{userinfo.theme.emoji}};">
+          <view class="leftl"></view>
+        </view>
+        <view class="right" style="background-color: {{userinfo.theme.color}};animation-name: myeye{{userinfo.theme.emoji}};">
+          <view class="rightl"></view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <van-toast id="van-toast" />
+</view>
+<view class="allrecord">
+  <van-cell-group>
+    <van-field custom-class="filed" model:value="{{message}}" type="textarea" placeholder="开始记录吧!" autosize border="{{ false }}" />
+  </van-cell-group>
+  <view class="button">
+  <view style="display: flex; flex-grow: 1;">
+    <van-button bind:tap="keepnote" custom-class="buttonst" icon="completed" type="primary" round>保存随笔</van-button>
+  </view>
+    <view style="display: flex; flex-grow: 1; flex-direction: row-reverse;">
+      <van-button custom-class="buttonst" icon="photograph" type="primary" round bindtap="takePhoto">拍照识别</van-button>
+    </view>
+  </view>
+</view>

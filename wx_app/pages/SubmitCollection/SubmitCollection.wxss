@@ -1,0 +1,34 @@
+/* pages/SubmitCollection/SubmitCollection.wxss */
+page{
+  background-color: rgb(240, 240, 240);
+}
+.top{
+  background-color: #fff;
+  margin: 10rpx;
+  padding:10rpx;
+}
+.input{
+  display: flex;
+  flex-direction: row;
+}
+.input .title{
+  display:flex;
+  flex-grow: 1;
+  font-size:14px;
+  color: rgb(83, 83, 83);
+  font-weight: 500;
+  margin-left: 14px;
+}
+.input .inputshow{
+  display: flex;
+  flex-grow: 2;
+  width: 300rpx;
+}
+.bottom{
+  background-color: #fff;
+  margin: 10rpx;
+  padding:10rpx;
+}
+.submit{
+  margin: 20rpx;
+}

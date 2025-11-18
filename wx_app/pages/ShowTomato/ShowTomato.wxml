@@ -1,0 +1,30 @@
+<!--pages/ShowTomato/ShowTomato.wxml-->
+<view class="circle">
+  <van-circle size="250" stroke-width="6" color="{{ gradientColor }}" value="{{ value }}">
+    <Slots>
+      <view class="showtime">
+        <van-count-down class="control-count-down" use-slot bind:change="onChange" bind:finish="finished" time="{{ time }}" format="HH:mm:ss" millisecond>
+          <block wx:if="{{ timeData.hours!=0}}">
+            <text class="item">{{ timeData.hours }}h</text>
+          </block>
+          <block wx:if="{{ timeData.minutes!=0}}">
+            <text class="item">{{ timeData.minutes }}m</text>
+          </block>
+          <text class="item">{{ timeData.seconds }}s</text>
+        </van-count-down>
+      </view>
+    </Slots>
+  </van-circle>
+</view>
+<view style="display:flex;justify-content:center;width:100%;margin-top: 100rpx;">
+  <view style="display: flex;flex-direction: column;justify-content: center;">
+  <block wx:if="{{continue}}">
+    <van-button round custom-class="bbutton" icon="play-circle-o" type="warning" bindclick="start">继 续</van-button>
+  </block>
+  <block wx:else>
+    <van-button round custom-class="bbutton" icon="pause-circle-o" type="primary" bindclick="pause">暂 停</van-button>
+  </block>
+    <van-button round custom-class="bbutton" icon="stop-circle-o" type="primary" bindclick="end">结 束</van-button>
+  </view>
+</view>
+<van-notify id="van-notify" />

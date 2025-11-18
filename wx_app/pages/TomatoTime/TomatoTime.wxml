@@ -1,0 +1,36 @@
+<!--pages/TomatoTime/TomatoTime.wxml-->
+<van-notify id="van-notify" />
+<view class="top">
+  <view class="text">请滑动选择时间：{{currentValue}}分钟</view>
+  <view class="settime">
+    <van-slider active-color="#ffd01e" min="1" value="{{ currentValue }}" bar-height="4px" use-button-slot bind:drag="onDrag">
+      <view class="custom-button" slot="button">{{ currentValue }}</view>
+    </van-slider>
+  </view>
+</view>
+<view class="choice">
+  <van-grid column-num="3" custom-class="grid">
+    <van-grid-item icon="cloud://cloud1-7g48m2a6e2ac093c.636c-cloud1-7g48m2a6e2ac093c-1320787210/icon/works.png" text="工作" bind:tap="c1"/>
+    <van-grid-item icon="cloud://cloud1-7g48m2a6e2ac093c.636c-cloud1-7g48m2a6e2ac093c-1320787210/icon/学习经历.png" text="学习" bind:tap="c2"/>
+    <van-grid-item icon="cloud://cloud1-7g48m2a6e2ac093c.636c-cloud1-7g48m2a6e2ac093c-1320787210/icon/思考.png" text="思考" bind:tap="c3"/>
+    <van-grid-item icon="cloud://cloud1-7g48m2a6e2ac093c.636c-cloud1-7g48m2a6e2ac093c-1320787210/icon/写作.png" text="写作" bind:tap="c4"/>
+    <van-grid-item icon="cloud://cloud1-7g48m2a6e2ac093c.636c-cloud1-7g48m2a6e2ac093c-1320787210/icon/阅读.png" text="阅读" bind:tap="c5"/>
+    <van-grid-item icon="cloud://cloud1-7g48m2a6e2ac093c.636c-cloud1-7g48m2a6e2ac093c-1320787210/icon/其他.png" text="其他" bind:tap="c6"/>
+  </van-grid>
+</view>
+<view class="circle">
+  <van-circle size="200" stroke-width="6" color="{{ gradientColor }}" value="{{ 100 }}">
+    <Slots>
+      <view class="showtime">
+        {{ currentValue }}:00
+      </view>
+    </Slots>
+  </van-circle>
+</view>
+<van-divider contentPosition="center">
+  <van-button round color="#00ac84" icon="play-circle-o" bind:tap="begin">开始</van-button>
+</van-divider>
+<van-divider contentPosition="right">
+  <van-button round color="rgb(141,192,79)" icon="share-o" bind:tap="history">历史记录</van-button>
+</van-divider>
+<van-toast id="van-toast" />

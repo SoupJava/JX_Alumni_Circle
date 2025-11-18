@@ -1,0 +1,69 @@
+/* pages/send/send.wxss */
+.select {
+  font-weight: bold;
+}
+
+.inputshow {
+  padding: 20rpx;
+}
+
+.inputpic {
+  margin: 20rpx;
+}
+
+.inputpic .picadd {
+  display: flex;
+  white-space: nowrap;
+  vertical-align: middle;
+}
+
+.inputpic .picadd .addbutton {
+  display: inline-block;
+  width: 100px;
+  height: 100px;
+  margin-top: 50px;
+  /* vertical-align: middle;
+  padding-bottom: 20px;
+  padding-left: 20px;  */
+}
+
+.inputpic .picadd .addbutton .addbuttonlogo {
+ height: 60px;
+ width: 60px;
+ margin-left: 20px;
+ margin-top:20px;
+}
+
+.inputpic .picadd .yourimg {
+  display: inline-block;
+}
+
+.inputpic .picadd .yourimg .img {
+  margin-right: 10px;
+}
+
+.add {
+  margin: 20rpx;
+}
+.week{
+  display: flex;
+  /* justify-content: center; */
+  align-items: center;
+  /* margin-top: 5rpx;
+  margin-bottom: 10rpx;
+  margin-left:30rpx; */
+  margin:20rpx;
+  flex-direction: row;
+}
+.week .sel{
+  /* width: 50%; */
+  flex-grow: 1;
+}
+.week .sel .sel2{
+  display: flex; 
+  flex-direction: row-reverse;
+}
+.week .sel .sel2 .text{
+  color:#1E90FF;
+  font-size: 30rpx;
+}

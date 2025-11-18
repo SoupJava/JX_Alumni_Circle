@@ -1,0 +1,5 @@
+<!--pages/photo/photo.wxml-->
+<van-notify id="van-notify" />
+<camera class="camera" frame-size="large"></camera>
+<!-- frame-size="large"拍照图片高清 -->
+<button class='record' bindtap='record'>拍摄</button>
